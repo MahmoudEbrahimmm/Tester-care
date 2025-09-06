@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Controllers\Dashboard\CategoriesController;
+use App\Http\Controllers\Dashboard\ProductsController;
 use App\Http\Controllers\ProfileController;
-use Illuminate\Routing\RouteGroup;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/index', function () {
@@ -14,10 +14,8 @@ Route::group([
     'as'=>'dashboard.'
 
 ], function(){
-
-
-
 Route::resource('categories',CategoriesController::class);
+Route::resource('products',ProductsController::class); 
 
 
 
