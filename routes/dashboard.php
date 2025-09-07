@@ -14,6 +14,7 @@ Route::group([
     'as'=>'dashboard.'
 
 ], function(){
+    
 Route::resource('categories',CategoriesController::class);
 Route::resource('products',ProductsController::class); 
 
@@ -25,7 +26,6 @@ Route::resource('products',ProductsController::class);
 //     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
 //     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 // });
-
 
 
 });
