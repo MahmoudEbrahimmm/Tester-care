@@ -33,17 +33,17 @@
                                 <td>{{ $product->created_at->format('d-m-y') }}</td>
                                 <td>
 
-                                    <a href="{{ route('dashboard.products.show', $product->id) }}" class="btn btn-primary"><i
+                                    <a href="{{ route('dashboard.products.show', $product->id) }}" class="btn btn-primary px-2"><i
                                             class="fa-solid fa-eye"></i></a>
 
-                                    <a href="{{ route('dashboard.products.edit', $product->id) }}" class="btn btn-success"><i
+                                    <a href="{{ route('dashboard.products.edit', $product->id) }}" class="btn btn-success px-2"><i
                                             class="fa-solid fa-pen-to-square"></i></a>
 
                                     <form action="{{ route('dashboard.products.destroy', $product->id) }}" method="post"
                                         style="display: inline;">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger"><i
+                                        <button type="submit" class="btn btn-danger px-2"><i
                                                 class="fa-solid fa-trash"></i></button>
                                     </form>
 

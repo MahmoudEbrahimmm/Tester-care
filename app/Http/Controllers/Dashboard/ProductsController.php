@@ -18,7 +18,6 @@ class ProductsController extends Controller
     {
         $products = Product::paginate(8);
         return view('dashboard.products.index', compact('products'));
-        // return "وصلنا لصفحة المنتجات ✅";
     }
 
     /**

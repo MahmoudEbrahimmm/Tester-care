@@ -7,7 +7,7 @@
                 <div class="col-xl-3 col-md-6">
                     <div class="card bg-info text-white mb-4">
                         <div class="card-body">إجمالي عدد المستخدمين: {{ \App\Models\User::count() }} </div>
-                        <div class="card-footer"><a href="{{route('dashboard.categories.index')}}"
+                        <div class="card-footer"><a href="{{route('dashboard.users.index')}}"
                              class="nav-link">عرض الجدول</a></div>
                     </div>
                 </div>

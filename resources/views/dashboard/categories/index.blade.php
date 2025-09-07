@@ -34,14 +34,14 @@
                                 <td>{{ $category->parent->name }}</td>
                                 <td>{{ $category->created_at }}</td>
                                 <td>
-                                    <a href="{{route('dashboard.categories.show',$category->id)}}" class="btn btn-primary"><i class="fa-solid fa-eye"></i></a>
+                                    <a href="{{route('dashboard.categories.show',$category->id)}}" class="btn btn-primary px-2"><i class="fa-solid fa-eye"></i></a>
 
-                                    <a href="{{route('dashboard.categories.edit',$category->id)}}" class="btn btn-success"><i class="fa-solid fa-pen-to-square"></i></a>
+                                    <a href="{{route('dashboard.categories.edit',$category->id)}}" class="btn btn-success px-2"><i class="fa-solid fa-pen-to-square"></i></a>
 
                                     <form action="{{route('dashboard.categories.destroy',$category->id)}}" method="post" style="display: inline;">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
+                                        <button type="submit" class="btn btn-danger px-2"><i class="fa-solid fa-trash"></i></button>
                                     </form>
                                 </td>
                         </tr>

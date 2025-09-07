@@ -24,7 +24,9 @@
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3" href="{{route('home')}}">{{ config('app.name') }}</a>
+        @if (Auth::user() && Auth::user()->role == "admin")
+            <a class="navbar-brand ps-3" href="{{ route('home') }}">{{ config('app.name') }}</a>
+        @endif
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
                 class="fas fa-bars"></i></button>
@@ -54,13 +56,17 @@
                     <i class="fas fa-user fa-fw me-1"></i> الحساب
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end shadow rounded-3" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#!"><i class="fas fa-cog me-2"></i>الإعدادات</a></li>
-                    <li><a class="dropdown-item" href="#!"><i class="fas fa-list me-2"></i>سجل النشاط</a></li>
+                    <li><a class="dropdown-item" href=""><i class="fas fa-cog me-2"></i>الإعدادات</a></li>
+                    <li><a class="dropdown-item" href=""><i class="fas fa-list me-2"></i>سجل النشاط</a></li>
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
-                    <li><a class="dropdown-item text-danger" href="#!"><i
-                                class="fas fa-sign-out-alt me-2"></i>تسجيل الخروج</a></li>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit" class="dropdown-item btn bg-white">
+                            <i class="fas fa-sign-out-alt me-2"></i> تسجيل الخروج
+                        </button>
+                    </form>
                 </ul>
             </li>
         </ul>
@@ -71,10 +77,12 @@
             <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                 <div class="sb-sidenav-menu">
                     <div class="nav">
-                        <h5 class="sb-sidenav-menu-heading">{{ Auth::user() ?? 'Admin Name' }}</h5>
+                        <h5 class="sb-sidenav-menu-heading">{{ Auth::user()->name ?? 'Admin Name' }}</h5>
                         <a class="nav-link" href="{{ route('dashboard') }}">
                             لوحة التحكم
                         </a>
+                        <a href="{{ route('dashboard.users.index') }}" class="nav-link">المستخدمين</a>
+
                         <a href="{{ route('dashboard.categories.index') }}" class="nav-link">الاقسام</a>
 
                         <a href="{{ route('dashboard.products.index') }}" class="nav-link">المنتجات</a>
@@ -87,7 +95,7 @@
                 </div>
 
                 <div class="sb-sidenav-footer">
-                    <div class="small">Logged in as: {{ Auth::user() ?? 'Admin Name' }}</div>
+                    <div class="small">Logged in as: {{ Auth::user()->name ?? 'Admin Name' }}</div>
                     {{ config('app.name') }}
                 </div>
             </nav>

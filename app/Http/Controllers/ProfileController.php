@@ -16,6 +16,7 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
+    
         return view('profile.edit', [
             'user' => $request->user(),
         ]);
@@ -24,18 +25,33 @@ class ProfileController extends Controller
     /**
      * Update the user's profile information.
      */
-    public function update(ProfileUpdateRequest $request): RedirectResponse
-    {
-        $request->user()->fill($request->validated());
+ public function update(Request $request): RedirectResponse
+{
+    $user = $request->user();
 
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
-        }
+    // Validation
+    $validated = $request->validate([
+        'name' => ['required', 'string', 'max:255'],
+        'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . $user->id],
+        'phone' => ['nullable', 'string', 'max:20'],
+        'role' => ['required', 'in:admin,staff,user'],
+        'password' => ['nullable', 'string', 'min:6'],
+    ]);
 
-        $request->user()->save();
-
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+    // لو في باسورد جديد اتغير
+    if (!empty($validated['password'])) {
+        $validated['password'] = bcrypt($validated['password']);
+    } else {
+        unset($validated['password']); // سيبه زي ماهو
     }
+
+    // Update user
+    $user->update($validated);
+
+    return redirect()->route('profile.edit')->with('status', 'تم تحديث البيانات بنجاح ✅');
+}
+
+
 
     /**
      * Delete the user's account.

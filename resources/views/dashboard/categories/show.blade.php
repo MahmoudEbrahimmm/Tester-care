@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 @section('title-page', 'عرض القسم')
 @section('content')
-    <x-breadcrumb title="عرض القسم" />
+    <x-breadcrumb title="{{$item->name}}" />
     <div class="container">
         <div class="row">
             <div class="col-md-12 m-auto text-center mt-3">
@@ -32,7 +32,7 @@
                             <td>{{ $item->description }}</td>
                             <td>{{ $item->created_at }}</td>
                             <td>{{ $item->updated_at }}</td>
-                            <td><a href="{{ route('dashboard.categories.index') }}" class="btn btn-primary"><i class="fa-solid fa-house"></i></a></td>
+                            <td><a href="{{ route('dashboard.categories.index') }}" class="btn btn-primary px-2"><i class="fa-solid fa-house"></i></a></td>
                         
                         </tr>
                     </tbody>
