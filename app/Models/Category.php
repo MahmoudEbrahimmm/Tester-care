@@ -27,4 +27,11 @@ class Category extends Model
     public function children(){
         return $this->hasMany(Category::class,'parent_id','id');
     }
+    public function scopeLatestCategory($query, $limit = null){
+        $query->latest();
+        if($limit){
+            $query->limit($limit);
+        }
+        return $query;
+    }
 }

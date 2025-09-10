@@ -17,7 +17,7 @@ class CheckAdmin
     public function handle(Request $request, Closure $next): Response
 {
     if (!Auth::check()) {
-        return redirect()->route('login');
+        return redirect()->route('/');
     }
 
     $role = Auth::user()->role;
@@ -37,7 +37,7 @@ class CheckAdmin
         return redirect()->route('home');
     }
 
-    return redirect()->route('login');
+    return redirect()->route('/');
 }
 
 

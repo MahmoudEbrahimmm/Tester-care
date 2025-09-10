@@ -3,11 +3,28 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Models\Cart;
+use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     public function index(){
-        return view('front.index');
+        $products = Product::all();
+        $products_media = Product::latestProduct(6)->get();
+        $category_home = Category::latestCategory(4)->get();
+        
+        return view('front.index',compact(
+        'products',
+        'products_media',
+        'category_home'
+        ));
+
     }
+    public function show(Product $product){
+        return view('front.show-product',compact('product'));
+    }
+
+    
 }

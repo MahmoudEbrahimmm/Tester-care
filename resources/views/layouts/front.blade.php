@@ -22,19 +22,21 @@
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        @stack('styles')
 
 </head>
 
 <body>
 
     <!-- ***** Preloader Start ***** -->
-    <div id="preloader">
+    {{-- <div id="preloader">
         <div class="jumper">
             <div></div>
             <div></div>
             <div></div>
         </div>
-    </div>
+    </div> --}}
     <!-- ***** Preloader End ***** -->
 
     <!-- ***** Header Area Start ***** -->
@@ -51,11 +53,11 @@
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                            @if (Auth::user() && Auth::user()->role == "admin")
-                            <li class="scroll-to-section"><a href="{{ route('dashboard') }}">لوحة التحكم</a></li>
+                            @if (Auth::user() && Auth::user()->role == 'admin')
+                                <li class="scroll-to-section"><a href="{{ route('dashboard') }}">لوحة التحكم</a></li>
                             @endif
                             <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
-                            <li class="scroll-to-section"><a href="#men">Men's</a></li>
+                            <li class="scroll-to-section"><a href="#men">المنتجات</a></li>
                             <li class="scroll-to-section"><a href="#women">Women's</a></li>
                             <li class="scroll-to-section"><a href="#kids">Kid's</a></li>
                             <li class="submenu">
@@ -67,10 +69,10 @@
                                     <li><a href="#">Contact Us</a></li>
                                 </ul>
                             </li>
-                            <li class="scroll-to-section"><a href="#explore">Explore</a></li>
-
+                            {{-- <li class="scroll-to-section"><a href="#explore">Explore</a></li> --}}
                             <li class="submenu">
-                                <a href="javascript:;"><i class="fa-solid fa-user fa-xl"></i></a>
+                                <a href="javascript:;"><i
+                                        class="fa-solid fa-user fa-xl"></i>{{ Auth::user()->name ?? '' }}</a>
                                 <ul>
                                     <li><a href="{{ route('login') }}">تسجيل الدخول</a></li>
                                     <li><a href="{{ route('register') }}">انشاء حساب</a></li>
@@ -83,6 +85,37 @@
 
                                 </ul>
                             </li>
+
+                            <li class="nav-item dropdown">
+                                <a href="javascript:void(0)" id="navbarDropdown" class="nav-link dropdown-toggle"
+                                    role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-solid fa-cart-shopping fa-xl"></i>
+                                    <strong>{{ count(session('cart', [])) }}</strong>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    @if (session('cart', []))
+                                        @foreach (session('cart', []) as $key => $value)
+                                            <div class="row mb-3 p-2">
+                                                <div class="col-md-4" style="width: 300px;">
+                                                    <img src="{{ asset('storage/' . $value['image']) }}" class="img-fluid"
+                                                        alt="">
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <h6><strong>{{ $value['name'] }}</strong></h6>
+                                                    الكمية: {{ $value['quantity'] }}<br>
+                                                    السعر: {{ $value['price'] }}<br>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                        <div class="text-center p-4">
+                                            <a href="{{ route('cart') }}" class="btn btn-info text-white">عرض
+                                                الكل</a>
+                                        </div>
+                                    @endif
+                                </div>
+                            </li>
+
+                            
                         </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>
@@ -99,7 +132,7 @@
 
     {{-- SECTION FOOTER --}}
     <!-- ***** Subscribe Area Starts ***** -->
-    <div class="subscribe">
+    {{-- <div class="subscribe">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
@@ -152,7 +185,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- ***** Subscribe Area Ends ***** -->
 
     <!-- ***** Footer Start ***** -->
@@ -219,9 +252,10 @@
 
     <!-- jQuery -->
     <script src="{{ asset('front/assets/js/jquery-2.1.0.min.js') }}"></script>
-    <!-- Bootstrap -->
-    <script src="{{ asset('front/assets/js/popper.js') }}"></script>
-    <script src="{{ asset('front/assets/js/bootstrap.min.js') }}"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+            @stack('scripts')
+
     <!-- Plugins -->
     <script src="{{ asset('front/assets/js/owl-carousel.js') }}"></script>
     <script src="{{ asset('front/assets/js/accordions.js') }}"></script>
@@ -237,6 +271,10 @@
     <script src="{{ asset('front/assets/js/custom.js') }}"></script>
     <!-- jQuery -->
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+    <!-- Bootstrap -->
+
+    <script src="{{ asset('front/assets/js/popper.js') }}"></script>
+    <script src="{{ asset('front/assets/js/bootstrap.min.js') }}"></script>
 
     <!-- Owl Carousel JS -->
     <script src="{{ asset('assets/js/owl.carousel.min.js') }}"></script>
@@ -247,7 +285,7 @@
                 items: 4,
                 loop: true,
                 margin: 10,
-                nav: true, // 👈 دي اللي بتظهر الأسهم
+                nav: true, 
                 dots: false,
                 autoplay: true,
                 autoplayTimeout: 3000,
@@ -259,6 +297,8 @@
             });
         });
     </script>
+
+
 
 
 </body>

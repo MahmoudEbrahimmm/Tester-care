@@ -2,21 +2,29 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Observers\CartObserver;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Cart extends Model
 {
-    use HasFactory;
+    public $incrementing = false;
     protected $fillable = [
-        'user_id',
-        'product_id',
-        'quantity',
+        'cookie_id','user_id','product_id','quantity','image','options',
     ];
+
+    protected static function booted(){
+
+        static::observe(CartObserver::class);
+    }
     public function user(){
-        return $this->belongsTo(User::class,'user_id','id');
+        return $this->belongsTo(User::class)->withDefault([
+            'name'=>"زائر"
+        ]);
     }
     public function product(){
-        return $this->belongsTo(Product::class,'product_id','id');
+        return $this->belongsTo(Product::class);
     }
+    
+
 }

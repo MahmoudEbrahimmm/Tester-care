@@ -15,7 +15,6 @@ class Product extends Model
         'price',
         'stock',
         'description',
-        'image',
     ];
     public function category(){
         return $this->belongsTo(Category::class,'category_id','id');
@@ -25,5 +24,12 @@ class Product extends Model
     }
     public function orderItems(){
         return $this->hasMany(OrderItem::class,'product_id','id');
+    }
+    public function scopeLatestProduct($query, $limit = null){
+        $query->latest();
+        if($limit){
+            $query->limit($limit);
+        }
+        return $query;
     }
 }

@@ -34,7 +34,7 @@ class AuthenticatedSessionController extends Controller
     } elseif ($role === 'staff') {
         return redirect()->route('dashboard');
     } else {
-        return redirect()->route('home');
+        return redirect()->route('/');
     }
 }
 
