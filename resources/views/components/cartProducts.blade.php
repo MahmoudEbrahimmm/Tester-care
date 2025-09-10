@@ -36,9 +36,9 @@
             </table>
         </div>
 
-        <div class="d-flex justify-content-between align-items-center mt-4 wow fadeInUp" data-wow-delay="0.9s">
-            <h4 class="fw-bold">الإجمالي: 
-                <span id="cartTotal" class="text-success">{{ $total }} ج.م</span>
+        <div class="d-flex justify-content-between align-items-center mt-4" data-wow-delay="0.9s">
+            <h4 class="fw-bold bg-dark p-2 text-white">الإجمالي: 
+                <span id="cartTotal">{{ $total }} ج.م</span>
             </h4>
             <div>
                 <a href="{{ route('home') }}"

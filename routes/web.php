@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/',[HomeController::class,'index'])->name('home');
-Route::get('product/show/{product:slug}',[HomeController::class,'show'])
+Route::get('product/show/{product:slug}',[HomeController::class,'showProduct'])
     ->name('show.product');
 
 Route::get('/cart', [CartController::class, 'index'])->name('cart');

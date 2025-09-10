@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="ltr">
 
 <head>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -11,6 +10,7 @@
         rel="stylesheet">
 
     <title>@yield('page-url', 'الصفحة الرئيسية')</title>
+    <link rel="icon" href="{{ asset('front/assets/images/Test_IT_logo.png') }}">
 
     <!-- Additional CSS Files -->
     <link rel="stylesheet" type="text/css" href="{{ asset('front/assets/css/bootstrap.min.css') }}">
@@ -22,12 +22,23 @@
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        @stack('styles')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    @stack('styles')
 
 </head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        text-align: left;
+    }
+</style>
 
 <body>
+
+
 
     <!-- ***** Preloader Start ***** -->
     {{-- <div id="preloader">
@@ -56,10 +67,10 @@
                             @if (Auth::user() && Auth::user()->role == 'admin')
                                 <li class="scroll-to-section"><a href="{{ route('dashboard') }}">لوحة التحكم</a></li>
                             @endif
-                            <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
+                            <li class="scroll-to-section"><a href="#top" class="active">الرئيسية</a></li>
                             <li class="scroll-to-section"><a href="#men">المنتجات</a></li>
-                            <li class="scroll-to-section"><a href="#women">Women's</a></li>
-                            <li class="scroll-to-section"><a href="#kids">Kid's</a></li>
+                            <li class="scroll-to-section"><a href="#women">قطع الغيار</a></li>
+                            <li class="scroll-to-section"><a href="#kids">الاقسام</a></li>
                             <li class="submenu">
                                 <a href="javascript:;">الصفحات</a>
                                 <ul>
@@ -70,6 +81,36 @@
                                 </ul>
                             </li>
                             {{-- <li class="scroll-to-section"><a href="#explore">Explore</a></li> --}}
+
+                            <li class="nav-item dropdown">
+                                <a href="javascript:void(0)" id="navbarDropdown" class="nav-link dropdown-toggle"
+                                    role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-solid fa-cart-shopping fa-xl"></i>
+                                    <strong>{{ count(session('cart', [])) }}</strong>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    @if (session('cart', []))
+                                        @foreach (session('cart', []) as $key => $value)
+                                            <div class="row mb-3 p-2">
+                                                <div class="col-md-4" style="width: 300px;">
+                                                    <img src="{{ asset('storage/' . $value['image']) }}"
+                                                        class="img-fluid" alt="">
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <h6><strong>{{ $value['name'] }}</strong></h6>
+                                                    الكمية: {{ $value['quantity'] }}<br>
+                                                    السعر: {{ $value['price'] }}<br>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                        <div class="text-center p-4">
+                                            <a href="{{ route('cart') }}" class="btn btn-primary text-white">عرض
+                                                الكل</a>
+                                        </div>
+                                    @endif
+                                </div>
+                            </li>
+
                             <li class="submenu">
                                 <a href="javascript:;"><i
                                         class="fa-solid fa-user fa-xl"></i>{{ Auth::user()->name ?? '' }}</a>
@@ -86,43 +127,18 @@
                                 </ul>
                             </li>
 
-                            <li class="nav-item dropdown">
-                                <a href="javascript:void(0)" id="navbarDropdown" class="nav-link dropdown-toggle"
-                                    role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fa-solid fa-cart-shopping fa-xl"></i>
-                                    <strong>{{ count(session('cart', [])) }}</strong>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    @if (session('cart', []))
-                                        @foreach (session('cart', []) as $key => $value)
-                                            <div class="row mb-3 p-2">
-                                                <div class="col-md-4" style="width: 300px;">
-                                                    <img src="{{ asset('storage/' . $value['image']) }}" class="img-fluid"
-                                                        alt="">
-                                                </div>
-                                                <div class="col-md-8">
-                                                    <h6><strong>{{ $value['name'] }}</strong></h6>
-                                                    الكمية: {{ $value['quantity'] }}<br>
-                                                    السعر: {{ $value['price'] }}<br>
-                                                </div>
-                                            </div>
-                                        @endforeach
-                                        <div class="text-center p-4">
-                                            <a href="{{ route('cart') }}" class="btn btn-info text-white">عرض
-                                                الكل</a>
-                                        </div>
-                                    @endif
-                                </div>
-                            </li>
 
-                            
                         </ul>
+
                         <a class='menu-trigger'>
                             <span>Menu</span>
                         </a>
                         <!-- ***** Menu End ***** -->
+
                     </nav>
+
                 </div>
+
             </div>
         </div>
     </header>
@@ -132,7 +148,7 @@
 
     {{-- SECTION FOOTER --}}
     <!-- ***** Subscribe Area Starts ***** -->
-    {{-- <div class="subscribe">
+    <div class="subscribe">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
@@ -185,7 +201,7 @@
                 </div>
             </div>
         </div>
-    </div> --}}
+    </div>
     <!-- ***** Subscribe Area Ends ***** -->
 
     <!-- ***** Footer Start ***** -->
@@ -195,48 +211,47 @@
                 <div class="col-lg-3">
                     <div class="first-item">
                         <div class="logo">
-                            <img src="{{ asset('front/assets/images/white-logo.png') }}"
-                                alt="hexashop ecommerce templatemo">
+                            <img src="{{ asset('front/assets/images/Test_IT_logo.png') }}" style="width:120px;"
+                                alt="Logo">
                         </div>
+
                         <ul>
-                            <li><a href="#">16501 Collins Ave, Sunny Isles Beach, FL 33160, United States</a>
-                            </li>
-                            <li><a href="#">hexashop@company.com</a></li>
+                            <li><a href="#">16501 شارع كولينز، ساني آيلز بيتش، فلوريدا، الولايات المتحدة</a></li>
+                            <li><a href="#">info@tester.com</a></li>
                             <li><a href="#">010-020-0340</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-3">
-                    <h4>Shopping &amp; Categories</h4>
+                    <h4>التسوق والفئات</h4>
                     <ul>
-                        <li><a href="#">Men’s Shopping</a></li>
-                        <li><a href="#">Women’s Shopping</a></li>
-                        <li><a href="#">Kid's Shopping</a></li>
+                        <li><a href="#">أجهزة اللاب توب </a></li>
+                        <li><a href="#">صيانة جميع المنتجات</a></li>
+                        <li><a href="#">الشاشات والكيسات</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3">
-                    <h4>Useful Links</h4>
+                    <h4>روابط مهمة</h4>
                     <ul>
-                        <li><a href="#">Homepage</a></li>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Help</a></li>
-                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="{{ route('home') }}">الصفحة الرئيسية</a></li>
+                        <li><a href="#">من نحن</a></li>
+                        <li><a href="#">اتصل بنا</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3">
-                    <h4>Help &amp; Information</h4>
+                    <h4>الدعم والمعلومات</h4>
                     <ul>
-                        <li><a href="#">Help</a></li>
-                        <li><a href="#">FAQ's</a></li>
-                        <li><a href="#">Shipping</a></li>
-                        <li><a href="#">Tracking ID</a></li>
+                        <li><a href="#">الأسئلة الشائعة</a></li>
+                        <li><a href="#">الشحن</a></li>
+                        <li><a href="#">متابعة الطلب</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-12">
                     <div class="under-footer">
-                        <p>Copyright © 2022 HexaShop Co., Ltd. All Rights Reserved.
-                            <br>Design: <a href="https://templatemo.com" target="_parent"
-                                title="free css templates">TemplateMo</a>
+                        <p>حقوق النشر © 2025 شركة تستر لصيانة وبيع كل ما يخص اللاب توب والأجهزة المستوردة. جميع الحقوق
+                            محفوظة.
+                            <br>تصميم: <a href="https://www.facebook.com/share/17NEDsze1R/" target="_blank"
+                                title="Backend devolper">Mahmoud Ebrahim</a>
                         </p>
                         <ul>
                             <li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -250,11 +265,12 @@
         </div>
     </footer>
 
+
     <!-- jQuery -->
     <script src="{{ asset('front/assets/js/jquery-2.1.0.min.js') }}"></script>
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-            @stack('scripts')
+    @stack('scripts')
 
     <!-- Plugins -->
     <script src="{{ asset('front/assets/js/owl-carousel.js') }}"></script>
@@ -285,7 +301,7 @@
                 items: 4,
                 loop: true,
                 margin: 10,
-                nav: true, 
+                nav: true,
                 dots: false,
                 autoplay: true,
                 autoplayTimeout: 3000,

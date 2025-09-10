@@ -12,19 +12,23 @@ class HomeController extends Controller
 {
     public function index(){
         $products = Product::all();
+        $categories = Category::all();
         $products_media = Product::latestProduct(6)->get();
         $category_home = Category::latestCategory(4)->get();
+        $productsOfCateory = Product::ofCategoryName('الصيانة')->get();
         
         return view('front.index',compact(
         'products',
+        'categories',
         'products_media',
-        'category_home'
+        'category_home',
+        'productsOfCateory'
         ));
 
     }
-    public function show(Product $product){
+    public function showProduct(Product $product){
         return view('front.show-product',compact('product'));
     }
-
+    
     
 }
