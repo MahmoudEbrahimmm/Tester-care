@@ -29,6 +29,15 @@ class HomeController extends Controller
     public function showProduct(Product $product){
         return view('front.show-product',compact('product'));
     }
+    public function allProducts(){
+        $products = Product::all();
+        return view('front.products',compact('products'));
+    }
+    public function about(){
+        $category_about = Category::latestCategory(3)->get();
+        return view('front.about',compact('category_about'));
+    }
+
     
     
 }

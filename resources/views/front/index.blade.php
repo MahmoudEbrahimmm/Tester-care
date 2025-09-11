@@ -43,7 +43,7 @@
     <section class="section" id="men">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-md-12">
                     <div class="section-heading">
                         <h2>المنتجات</h2>
                         <div
@@ -81,7 +81,7 @@
     <section class="section" id="women">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-md-12">
                     <div class="section-heading">
                         <h2>قطع الغيار</h2>
                         <div
@@ -118,7 +118,7 @@
     <section class="section" id="kids">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-md-12">
                     <div class="section-heading">
                         <h2>الاقسام</h2>
                         <div

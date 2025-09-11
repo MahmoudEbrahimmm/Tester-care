@@ -75,13 +75,10 @@
                             <li class="submenu">
                                 <a href="javascript:;">الصفحات</a>
                                 <ul>
-                                    <li><a href="#">Products</a></li>
-                                    <li><a href="#">Single Product</a></li>
-                                    <li><a href="#">Contact Us</a></li>
+                                    <li><a href="{{ route('products') }}">كل المنتجات</a></li>
+                                    <li><a href="{{ route('about') }}">من نحن</a></li>
                                 </ul>
                             </li>
-                            {{-- <li class="scroll-to-section"><a href="#explore">Explore</a></li> --}}
-
                             <li class="nav-item dropdown">
                                 <a href="javascript:void(0)" id="navbarDropdown" class="nav-link dropdown-toggle"
                                     role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -160,36 +157,30 @@
                             <img src="{{ asset('front/assets/images/Test_IT_logo.png') }}" style="width:120px;"
                                 alt="Logo">
                         </div>
-
-                        <ul>
-                            <li><a href="#">16501 شارع كولينز، ساني آيلز بيتش، فلوريدا، الولايات المتحدة</a></li>
-                            <li><a href="#">info@tester.com</a></li>
-                            <li><a href="#">010-020-0340</a></li>
-                        </ul>
                     </div>
+                </div>
+                                <div class="col-lg-3">
+                    <h4>الوصول الينا</h4>
+                    <ul>
+                        <li><a href="#">2009 امتداد شارع جيهان بعد دار الضيافه شارع زهور هولندا</a></li>
+                        <li><a href="#">info@tester.com</a></li>
+                        <li><a href="https://wa.me/2010020258177">010-020-0340</a></li>
+                    </ul>
                 </div>
                 <div class="col-lg-3">
                     <h4>التسوق والفئات</h4>
                     <ul>
-                        <li><a href="#">أجهزة اللاب توب </a></li>
-                        <li><a href="#">صيانة جميع المنتجات</a></li>
-                        <li><a href="#">الشاشات والكيسات</a></li>
+                        <li><a href="{{route('products')}}">أجهزة اللاب توب </a></li>
+                        <li><a href="{{route('home')}}#women">صيانة جميع المنتجات</a></li>
+                        <li><a href="{{route('home')}}#kids">جميع الاقسام</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3">
                     <h4>روابط مهمة</h4>
                     <ul>
                         <li><a href="{{ route('home') }}">الصفحة الرئيسية</a></li>
-                        <li><a href="#">من نحن</a></li>
-                        <li><a href="#">اتصل بنا</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-3">
-                    <h4>الدعم والمعلومات</h4>
-                    <ul>
-                        <li><a href="#">الأسئلة الشائعة</a></li>
-                        <li><a href="#">الشحن</a></li>
-                        <li><a href="#">متابعة الطلب</a></li>
+                        <li><a href="{{route('about')}}">من نحن</a></li>
+                        <li><a href="{{route('home')}}#contact">اتصل بنا</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-12">
@@ -200,10 +191,20 @@
                                 title="Backend devolper">Mahmoud Ebrahim</a>
                         </p>
                         <ul>
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                            <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                            <li><a href="#" target="_blank" class="text-primary"><i
+                                        class="fab fa-facebook-f"></i></a></li>
+                            <li>
+                                <a href="https://wa.me/2010020258177" target="_blank" class="text-success">
+                                    <i class="fab fa-whatsapp fa-lg"></i>
+                                </a>
+
+                            </li>
+                            <li><a href="#"><i class="fab fa-tiktok"></i></a></li>
+                            <li>
+                                <a href="https://www.instagram.com/ahmed.r2fat.1192?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                                    target="_blank" class="text-danger">
+                                    <i class="fab fa-instagram"></i></a>
+                            </li>
                         </ul>
                     </div>
                 </div>
