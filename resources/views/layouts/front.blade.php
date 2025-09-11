@@ -74,7 +74,7 @@
                             <li class="submenu">
                                 <a href="javascript:;">الصفحات</a>
                                 <ul>
-                                    <li><a href="#">About Us</a></li>
+                                    <li><a href="{{route('contact')}}">تواصل معنا</a></li>
                                     <li><a href="#">Products</a></li>
                                     <li><a href="#">Single Product</a></li>
                                     <li><a href="#">Contact Us</a></li>

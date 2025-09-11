@@ -88,6 +88,7 @@
                         <a href="{{ route('dashboard.categories.index') }}" class="nav-link">الاقسام</a>
 
                         <a href="{{ route('dashboard.products.index') }}" class="nav-link">المنتجات</a>
+                        <a href="{{ route('dash.contact') }}" class="nav-link">رسائل العملاء</a>
 
 
 
