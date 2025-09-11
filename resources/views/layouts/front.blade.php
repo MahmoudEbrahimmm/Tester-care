@@ -71,10 +71,10 @@
                             <li class="scroll-to-section"><a href="#men">المنتجات</a></li>
                             <li class="scroll-to-section"><a href="#women">قطع الغيار</a></li>
                             <li class="scroll-to-section"><a href="#kids">الاقسام</a></li>
+                            <li class="scroll-to-section"><a href="#contact">تواصل معنا</a></li>
                             <li class="submenu">
                                 <a href="javascript:;">الصفحات</a>
                                 <ul>
-                                    <li><a href="{{route('contact')}}">تواصل معنا</a></li>
                                     <li><a href="#">Products</a></li>
                                     <li><a href="#">Single Product</a></li>
                                     <li><a href="#">Contact Us</a></li>
@@ -144,65 +144,11 @@
     </header>
     <!-- ***** Header Area End ***** -->
 
-    @yield('content')
-
-    {{-- SECTION FOOTER --}}
-    <!-- ***** Subscribe Area Starts ***** -->
-    <div class="subscribe">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="section-heading">
-                        <h2>By Subscribing To Our Newsletter You Can Get 30% Off</h2>
-                        <span>Details to details is what makes Hexashop different from the other themes.</span>
-                    </div>
-                    <form id="subscribe" action="" method="get">
-                        <div class="row">
-                            <div class="col-lg-5">
-                                <fieldset>
-                                    <input name="name" type="text" id="name" placeholder="Your Name"
-                                        required="">
-                                </fieldset>
-                            </div>
-                            <div class="col-lg-5">
-                                <fieldset>
-                                    <input name="email" type="text" id="email" pattern="[^ @]*@[^ @]*"
-                                        placeholder="Your Email Address" required="">
-                                </fieldset>
-                            </div>
-                            <div class="col-lg-2">
-                                <fieldset>
-                                    <button type="submit" id="form-submit" class="main-dark-button"><i
-                                            class="fa fa-paper-plane"></i></button>
-                                </fieldset>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="col-lg-4">
-                    <div class="row">
-                        <div class="col-6">
-                            <ul>
-                                <li>Store Location:<br><span>Sunny Isles Beach, FL 33160, United States</span></li>
-                                <li>Phone:<br><span>010-020-0340</span></li>
-                                <li>Office Location:<br><span>North Miami Beach</span></li>
-                            </ul>
-                        </div>
-                        <div class="col-6">
-                            <ul>
-                                <li>Work Hours:<br><span>07:30 AM - 9:30 PM Daily</span></li>
-                                <li>Email:<br><span>info@company.com</span></li>
-                                <li>Social Media:<br><span><a href="#">Facebook</a>, <a
-                                            href="#">Instagram</a>, <a href="#">Behance</a>, <a
-                                            href="#">Linkedin</a></span></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="mt-5">
+        @yield('content')
     </div>
-    <!-- ***** Subscribe Area Ends ***** -->
+
+
 
     <!-- ***** Footer Start ***** -->
     <footer>

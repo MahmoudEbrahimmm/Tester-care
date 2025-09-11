@@ -15,12 +15,8 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-
-
         $categories = Category::with('parent')->paginate(8);
-        // $categories_count = Category::count();
-
-        // $categories = Category::all();
+        
         return view('dashboard.categories.index', compact('categories'));
     }
 

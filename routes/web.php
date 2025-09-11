@@ -8,17 +8,16 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/',[HomeController::class,'index'])->name('home');
-Route::get('product/show/{product:slug}',[HomeController::class,'showProduct'])
-    ->name('show.product');
-Route::get('contact',[ContactController::class,'index'])->name('contact');
-Route::post('contact',[ContactController::class,'store'])->name('contact.store');
-Route::post('contact',[ContactController::class,'delete'])->name('contact.delete');
+Route::get('product/show/{product:slug}',[HomeController::class,'showProduct'])->name('show.product');
 
+Route::resource('contact',ContactController::class);
+
+
+//cart
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
 Route::get('add.to.cart/{id}',[CartController::class,'addToCart'])->name('add.to.cart');
 Route::post('/cart-update', [CartController::class, 'cartUpdate'])->name('cart.update');
-
-
+//checkout
 Route::get('/checkout', [CartController::class, 'checkout'])->name('checkout');
 Route::post('/checkout/store', [CartController::class, 'checkoutStore'])->name('checkout.store');
 

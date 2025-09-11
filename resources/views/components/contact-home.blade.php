@@ -1,9 +1,4 @@
-@extends('layouts.front')
-@section('page-url', 'تواصل معنا')
-@section('content')
-
-    <!-- ***** Contact Area Starts ***** -->
-    <div class="contact-us">
+<div class="contact-us" id="contact">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
@@ -30,8 +25,8 @@
                               </div>
                               @error('name')
                                 <div class=" text-danger">
-                                                                {{ $message }}
-                                                        </div>
+                                        {{ $message }}
+                                    </div>
                             @enderror
                             <div class="col-lg-6">
                                 <fieldset>
@@ -66,6 +61,3 @@
             </div>
         </div>
     </div>
-    <!-- ***** Contact Area Ends ***** -->
-
-@endsection

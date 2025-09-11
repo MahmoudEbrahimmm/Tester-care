@@ -152,7 +152,9 @@
     </section>
     <!-- ***** Kids Area Ends ***** -->
 
-
+<!-- ***** Contact Area Starts ***** -->
+    <x-contact-home />
+    <!-- ***** Contact Area Ends ***** -->
     <!-- ***** Social Area Starts ***** -->
     <section class="section" id="social">
         <div class="container">

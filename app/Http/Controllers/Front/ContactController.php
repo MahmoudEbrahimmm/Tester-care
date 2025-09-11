@@ -11,10 +11,6 @@ class ContactController extends Controller
     public function index(){
         return view('front.contact');
     }
-    public function showContact(){
-        $contacts = Contact::all();
-        return view('dashboard.contact.index',compact('contacts'));
-    }
     public function store(Request $request){
         $request->validate([
             'name'=>['required','string','max:255'],
@@ -28,9 +24,16 @@ class ContactController extends Controller
         ]);
         return redirect()->route('home')->with('success','تم ارسال رسالتكم بنجاح');
     }
-    public function delete($id){
+        public function show(){
+        $contacts = Contact::all();
+        return view('dashboard.contacts.index',compact('contacts'));
+    }
+    public function destroy($id){
         $contact = Contact::findOrFail($id);
         $contact->delete();
+        return redirect()->route('dash.contact')
+            ->with('success','تم حذف الرسالة بنجاح');
+
     }
 
 }
