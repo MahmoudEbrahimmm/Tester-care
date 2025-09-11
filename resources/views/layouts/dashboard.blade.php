@@ -33,42 +33,36 @@
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
                 class="fas fa-bars"></i></button>
         <!-- Nav-bar left -->
+
         
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">
-                    <i class="fa-solid fa-bell fa-xl"></i>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="fa-solid fa-envelope fa-xl"></i>
-                </a>
-            </li>
-        </ul>
-
-
         <!-- Navbar-->
-        <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdown"
-                    role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="fas fa-user fa-fw me-1"></i> الحساب
-                </a>
-                <ul class="dropdown-menu dropdown-menu-end shadow rounded-3" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href=""><i class="fas fa-cog me-2"></i>الإعدادات</a></li>
-                    <li><a class="dropdown-item" href=""><i class="fas fa-list me-2"></i>سجل النشاط</a></li>
-                    <li>
-                        <hr class="dropdown-divider" />
-                    </li>
-                    <form method="POST" action="{{ route('logout') }}">
-                        @csrf
-                        <button type="submit" class="dropdown-item btn bg-white">
-                            <i class="fas fa-sign-out-alt me-2"></i> تسجيل الخروج
-                        </button>
-                    </form>
-                </ul>
-            </li>
+
+<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+    <!-- الإشعارات -->
+    <x-notification />
+
+    <!-- الحساب -->
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdown"
+           role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-user fa-fw me-1"></i> الحساب
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end shadow rounded-3" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href=""><i class="fas fa-cog me-2"></i>الإعدادات</a></li>
+            <li><a class="dropdown-item" href=""><i class="fas fa-list me-2"></i>سجل النشاط</a></li>
+            <li><hr class="dropdown-divider" /></li>
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button type="submit" class="dropdown-item btn bg-white">
+                    <i class="fas fa-sign-out-alt me-2"></i> تسجيل الخروج
+                </button>
+            </form>
+        </ul>
+    </li>
+</ul>
+
+
+
         </ul>
 
     </nav>

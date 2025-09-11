@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\User;
+use App\Notifications\OrderCreatedNotification;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -97,6 +99,11 @@ class CartController extends Controller
         $order->update([
             "amount" => $amount
         ]);
+
+        $admin = User::where('role', 'admin')->first();
+        if ($admin) {
+            $admin->notify(new OrderCreatedNotification($order));
+        }
 
         // تفريغ السلة
         session()->forget('cart');
