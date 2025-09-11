@@ -101,6 +101,6 @@ class CartController extends Controller
         // تفريغ السلة
         session()->forget('cart');
 
-        return redirect()->route('home')->with('success', 'تم إتمام الطلب بنجاح');
+        return redirect()->route('home')->with('success', 'تم ارسال الاوردر بنجاح سنتواصل معكم قريبا');
     }
 }

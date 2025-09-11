@@ -26,30 +26,28 @@
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
-        @if (Auth::user() && Auth::user()->role == "admin")
+        @if (Auth::user() && Auth::user()->role == 'admin')
             <a class="navbar-brand ps-3" href="{{ route('home') }}">{{ config('app.name') }}</a>
         @endif
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
                 class="fas fa-bars"></i></button>
         <!-- Nav-bar left -->
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link active" aria-current="page" href="#">
+                    <i class="fa-solid fa-bell fa-xl"></i>
+                </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
+                <a class="nav-link" href="#">
+                    <i class="fa-solid fa-envelope fa-xl"></i>
+                </a>
             </li>
         </ul>
-        <!-- Navbar Search-->
-        <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-            <div class="input-group">
-                <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..."
-                    aria-describedby="btnNavbarSearch" />
-                <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i
-                        class="fas fa-search"></i></button>
-            </div>
-        </form>
+
+
         <!-- Navbar-->
         <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
             <li class="nav-item dropdown">
@@ -88,6 +86,7 @@
                         <a href="{{ route('dashboard.categories.index') }}" class="nav-link">الاقسام</a>
 
                         <a href="{{ route('dashboard.products.index') }}" class="nav-link">المنتجات</a>
+                        <a href="{{ route('dashboard.orders.index') }}" class="nav-link">طلبات الزبائن</a>
                         <a href="{{ route('dash.contact') }}" class="nav-link">رسائل العملاء</a>
 
 

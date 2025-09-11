@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Models\Order;
 use Illuminate\Http\Request;
 
 class OrdersController extends Controller
@@ -12,7 +13,8 @@ class OrdersController extends Controller
      */
     public function index()
     {
-        //
+        $orders = Order::with('items.product')->get();
+        return view('dashboard.orders.index',compact('orders'));
     }
 
     /**
@@ -60,6 +62,9 @@ class OrdersController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $order = Order::findOrFail($id);
+        $order->delete();
+
+        return redirect()->route('dashboard.orders.index')->with('success','تم حذف الاوردر بنجاح');
     }
 }
