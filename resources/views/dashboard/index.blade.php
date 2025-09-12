@@ -38,6 +38,12 @@
                         <div class="card-footer"><a href="{{ route('dash.contact') }}" class="nav-link">عرض الجدول</a></div>
                     </div>
                 </div>
+                <div class="col-xl-3 col-md-6">
+                    <div class="card bg-dark text-white mb-4">
+                        <div class="card-body"> إجمالي اجهزة الصيانة: {{ \App\Models\Spare::count() }} </div>
+                        <div class="card-footer"><a href="{{ route('dashboard.spares.index') }}" class="nav-link">عرض الجدول</a></div>
+                    </div>
+                </div>
 
 
                 <div class="row">

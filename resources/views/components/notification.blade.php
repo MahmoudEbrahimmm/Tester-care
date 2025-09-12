@@ -11,7 +11,7 @@
         </a>
         <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="notificationsDropdown" style="width: 320px;">
             <li class="dropdown-header fw-bold">
-                 لديك {{ auth()->user()->unreadNotifications->count() }} إشعار جديد
+                 لديك {{ auth()->user()->unreadNotifications->count() }} طلب جديد
             </li>
             <div class="dropdown-divider"></div>
             @forelse (auth()->user()->unreadNotifications as $notification)
@@ -29,11 +29,11 @@
                 </li>
                 <div class="dropdown-divider"></div>
             @empty
-                <li class="p-2 text-center text-muted">لا توجد إشعارات جديدة</li>
+                <li class="p-2 text-center text-muted">لا توجد طلبات جديدة</li>
             @endforelse
             <li>
                 <a class="dropdown-item text-center text-primary fw-bold" href="{{ route('dashboard.orders.index') }}">
-                    عرض كل الإشعارات
+                    عرض كل الطلبات
                 </a>
             </li>
         </ul>

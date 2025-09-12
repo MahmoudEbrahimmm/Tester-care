@@ -38,9 +38,7 @@
         <!-- Navbar-->
 
 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-    <!-- الإشعارات -->
-    <x-notification />
-
+    
     <!-- الحساب -->
     <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdown"
@@ -48,8 +46,7 @@
             <i class="fas fa-user fa-fw me-1"></i> الحساب
         </a>
         <ul class="dropdown-menu dropdown-menu-end shadow rounded-3" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href=""><i class="fas fa-cog me-2"></i>الإعدادات</a></li>
-            <li><a class="dropdown-item" href=""><i class="fas fa-list me-2"></i>سجل النشاط</a></li>
+            <li><a class="dropdown-item" href="{{route('dashboard')}}"><i class="fas fa-list me-2"></i>لوحة التحكم</a></li>
             <li><hr class="dropdown-divider" /></li>
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
@@ -59,6 +56,8 @@
             </form>
         </ul>
     </li>
+    <x-notification />
+
 </ul>
 
 
@@ -75,6 +74,7 @@
                         <a class="nav-link" href="{{ route('dashboard') }}">
                             لوحة التحكم
                         </a>
+                        <a href="{{route('dashboard.spares.index')}}" class="nav-link">صيانة اجهزة العملاء</a>
                         <a href="{{ route('dashboard.users.index') }}" class="nav-link">المستخدمين</a>
 
                         <a href="{{ route('dashboard.categories.index') }}" class="nav-link">الاقسام</a>

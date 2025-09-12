@@ -21,20 +21,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+    <link rel="stylesheet" href="{{asset('front/assets/css/tester.css')}}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
         integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     @stack('styles')
 
 </head>
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        line-height: 1.6;
-        text-align: left;
-    }
-</style>
 
 <body>
 
@@ -61,6 +54,37 @@
                             <img src="{{ asset('front/assets/images/Test_IT_logo.png') }}" style="width:120px;"
                                 alt="Logo">
                         </a>
+
+                        {{-- cart  --}}
+                        <ul class="nav">
+                            <li class="submenu cart-menu">
+                                <a href="javascript:void(0)" class="cart-toggle">
+                                    <i class="fa-solid fa-cart-shopping"></i>
+                                    <strong>{{ count(session('cart', [])) }}</strong>
+                                </a>
+                                <ul class="cart-dropdown">
+                                    @if (session('cart', []))
+                                        @foreach (session('cart', []) as $key => $value)
+                                            <li class="cart-item">
+                                                <div class="cart-item-img">
+                                                    <img src="{{ asset('storage/' . $value['image']) }}" alt="">
+                                                </div>
+                                                <div class="cart-item-details">
+                                                    <h6>{{ $value['name'] }}</h6>
+                                                    <p>الكمية: {{ $value['quantity'] }} | السعر: {{ $value['price'] }}
+                                                    </p>
+                                                </div>
+                                            </li>
+                                        @endforeach
+                                        <li class="cart-footer">
+                                            <a href="{{ route('cart') }}" class="btn-view-cart">عرض الكل</a>
+                                        </li>
+                                    @else
+                                        <li class="cart-empty"> السلة فارغة</li>
+                                    @endif
+                                </ul>
+                            </li>
+                        </ul>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
@@ -78,34 +102,6 @@
                                     <li><a href="{{ route('products') }}">كل المنتجات</a></li>
                                     <li><a href="{{ route('about') }}">من نحن</a></li>
                                 </ul>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a href="javascript:void(0)" id="navbarDropdown" class="nav-link dropdown-toggle"
-                                    role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fa-solid fa-cart-shopping fa-xl"></i>
-                                    <strong>{{ count(session('cart', [])) }}</strong>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    @if (session('cart', []))
-                                        @foreach (session('cart', []) as $key => $value)
-                                            <div class="row mb-3 p-2">
-                                                <div class="col-md-4" style="width: 300px;">
-                                                    <img src="{{ asset('storage/' . $value['image']) }}"
-                                                        class="img-fluid" alt="">
-                                                </div>
-                                                <div class="col-md-8">
-                                                    <h6><strong>{{ $value['name'] }}</strong></h6>
-                                                    الكمية: {{ $value['quantity'] }}<br>
-                                                    السعر: {{ $value['price'] }}<br>
-                                                </div>
-                                            </div>
-                                        @endforeach
-                                        <div class="text-center p-4">
-                                            <a href="{{ route('cart') }}" class="btn btn-primary text-white">عرض
-                                                الكل</a>
-                                        </div>
-                                    @endif
-                                </div>
                             </li>
 
                             <li class="submenu">
@@ -159,7 +155,7 @@
                         </div>
                     </div>
                 </div>
-                                <div class="col-lg-3">
+                <div class="col-lg-3">
                     <h4>الوصول الينا</h4>
                     <ul>
                         <li><a href="#">2009 امتداد شارع جيهان بعد دار الضيافه شارع زهور هولندا</a></li>
@@ -170,17 +166,17 @@
                 <div class="col-lg-3">
                     <h4>التسوق والفئات</h4>
                     <ul>
-                        <li><a href="{{route('products')}}">أجهزة اللاب توب </a></li>
-                        <li><a href="{{route('home')}}#women">صيانة جميع المنتجات</a></li>
-                        <li><a href="{{route('home')}}#kids">جميع الاقسام</a></li>
+                        <li><a href="{{ route('products') }}">أجهزة اللاب توب </a></li>
+                        <li><a href="{{ route('home') }}#women">صيانة جميع المنتجات</a></li>
+                        <li><a href="{{ route('home') }}#kids">جميع الاقسام</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3">
                     <h4>روابط مهمة</h4>
                     <ul>
                         <li><a href="{{ route('home') }}">الصفحة الرئيسية</a></li>
-                        <li><a href="{{route('about')}}">من نحن</a></li>
-                        <li><a href="{{route('home')}}#contact">اتصل بنا</a></li>
+                        <li><a href="{{ route('about') }}">من نحن</a></li>
+                        <li><a href="{{ route('home') }}#contact">اتصل بنا</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-12">
@@ -257,6 +253,25 @@
                     '<i class="fa fa-chevron-left"></i>',
                     '<i class="fa fa-chevron-right"></i>'
                 ]
+            });
+        });
+    </script>
+    {{-- cart   --}}
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const cartMenu = document.querySelector(".cart-menu");
+            const cartToggle = cartMenu.querySelector(".cart-toggle");
+
+            cartToggle.addEventListener("click", function(e) {
+                e.preventDefault();
+                cartMenu.classList.toggle("open");
+            });
+
+            // يقفل القائمة لو ضغطت برة
+            document.addEventListener("click", function(e) {
+                if (!cartMenu.contains(e.target)) {
+                    cartMenu.classList.remove("open");
+                }
             });
         });
     </script>

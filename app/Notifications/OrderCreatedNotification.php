@@ -46,12 +46,9 @@ class OrderCreatedNotification extends Notification
     public function toDatabase($notifiable){
         return [
              'order_id'      => $this->order->id,
-            // اسم العميل: لو فيه user مرتبط استخدم $this->order->user->name
-            // وإلا استخدم حقل name الموجود في جدول orders (اللي المستخدم أدخله في checkout)
             'name'          => $this->order->name,
             'amount'        => $this->order->amount,
             'message'       => "طلب جديد من {$this->order->name}",
-            // المكان الّي تريد الانتقال إليه عند الضغط (هنا نوجه لصفحة عرض الأوردرات في الداش)
             'url'           => route('dashboard.orders.index'),
         ];
     }

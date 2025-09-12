@@ -1,12 +1,12 @@
 <?php
 
 use App\Http\Controllers\Dashboard\OrdersController;
+use App\Http\Controllers\Dashboard\SpareController;
 use App\Http\Controllers\Dashboard\UsersController;
 use App\Http\Controllers\Dashboard\CategoriesController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\ProductsController;
 use App\Http\Controllers\Front\ContactController;
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -44,6 +44,7 @@ Route::resource('categories',CategoriesController::class);
 Route::resource('products',ProductsController::class); 
 Route::resource('users',UsersController::class); 
 Route::resource('orders',OrdersController::class); 
+Route::resource('spares',SpareController::class);
 
 
 });

@@ -8,16 +8,14 @@
                     <div class="left-content">
                         <div class="thumb">
                             @if (session()->has('success'))
-                                <div class="alert bg-success text-white mb-3 mt-3">{{ session('success') }}</div>
+                                <div class="alert bg-success text-white mb-5">{{ session('success') }}</div>
                             @endif
-                            <div class="inner-content mt-4">
+                            <div class="inner-content">
                                 <h4><img src="{{ asset('front/assets/images/Test_IT_logo.png') }}" style="width: 300px;"
                                         alt=""></h4>
                                 <span> &amp;نقدم أفضل خدمات صيانة أجهزة اللاب توب بجودة عالية، ونوفر تشكيلة متنوعة من
                                     الأجهزة والإكسسوارات الأصلية لتلبية كل احتياجاتك.</span>
-                                <div class="main-border-button">
-                                    <a href="#">Purchase Now!</a>
-                                </div>
+                                
                             </div>
                             <img src="{{ asset('front/assets/images/خلفيه 1.jpg') }}" alt="">
                         </div>
