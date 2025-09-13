@@ -123,4 +123,9 @@ public function update(Request $request, string $id)
         return redirect()->route('dashboard.products.index')
             ->with('success','تم حذف المنتج بنجاح');
     }
+
+
+
+
+
 }

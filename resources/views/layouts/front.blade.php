@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="{{asset('front/assets/css/tester.css')}}">
+    <link rel="stylesheet" href="{{ asset('front/assets/css/tester.css') }}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
         integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -44,97 +44,119 @@
     <!-- ***** Preloader End ***** -->
 
     <!-- ***** Header Area Start ***** -->
-    <header class="header-area header-sticky">
+    <header class="header-area bg-white shadow-sm">
         <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <nav class="main-nav">
-                        <!-- ***** Logo Start ***** -->
-                        <a href="{{ url('/') }}" class="logo">
-                            <img src="{{ asset('front/assets/images/Test_IT_logo.png') }}" style="width:120px;"
-                                alt="Logo">
-                        </a>
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <!-- Logo -->
+                <a class="navbar-brand" href="{{ url('/') }}">
+                    <img src="{{ asset('front/assets/images/Test_IT_logo.png') }}" alt="Logo" style="width:120px;">
+                </a>
 
+                <!-- زرار الموبايل -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+                    aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="mainNavbar">
+                    <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                        @if (Auth::user() && Auth::user()->role == 'admin')
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('dashboard') }}">لوحة التحكم</a>
+                            </li>
+                        @endif
+                        <li class="nav-item"><a class="nav-link active" href="#top">الرئيسية</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#men">المنتجات</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#women">قطع الغيار</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#kids">الاقسام</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#contact">تواصل معنا</a></li>
+
+                        <!-- صفحات -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button"
+                                data-bs-toggle="dropdown">
+                                الصفحات
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="pagesDropdown">
+                                <li><a class="dropdown-item" href="{{ route('products') }}">كل المنتجات</a></li>
+                                <li><a class="dropdown-item" href="{{ route('about') }}">من نحن</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    {{-- rtl  --}}
+                    <ul class="navbar-nav ms-auto align-items-center">
                         {{-- cart  --}}
-                        <ul class="nav">
-                            <li class="submenu cart-menu">
-                                <a href="javascript:void(0)" class="cart-toggle">
-                                    <i class="fa-solid fa-cart-shopping"></i>
-                                    <strong>{{ count(session('cart', [])) }}</strong>
-                                </a>
-                                <ul class="cart-dropdown">
-                                    @if (session('cart', []))
-                                        @foreach (session('cart', []) as $key => $value)
-                                            <li class="cart-item">
-                                                <div class="cart-item-img">
-                                                    <img src="{{ asset('storage/' . $value['image']) }}" alt="">
-                                                </div>
-                                                <div class="cart-item-details">
-                                                    <h6>{{ $value['name'] }}</h6>
-                                                    <p>الكمية: {{ $value['quantity'] }} | السعر: {{ $value['price'] }}
-                                                    </p>
-                                                </div>
-                                            </li>
-                                        @endforeach
-                                        <li class="cart-footer">
-                                            <a href="{{ route('cart') }}" class="btn-view-cart">عرض الكل</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link position-relative" href="#" id="cartDropdown" role="button"
+                                data-bs-toggle="dropdown">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                                <span class="badge bg-danger position-absolute top-0 start-100 translate-middle">
+                                    {{ count(session('cart', [])) }}
+                                </span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end p-3" aria-labelledby="cartDropdown"
+                                style="min-width:250px;">
+                                @if (session('cart', []))
+                                    @foreach (session('cart', []) as $value)
+                                        <li class="d-flex align-items-center mb-2">
+                                            <img src="{{ asset('storage/' . $value['image']) }}" alt=""
+                                                width="40" class="me-2 rounded">
+                                            <div>
+                                                <strong>{{ $value['name'] }}</strong><br>
+                                                <small>الكمية: {{ $value['quantity'] }} | السعر:
+                                                    {{ $value['price'] }}</small>
+                                            </div>
                                         </li>
-                                    @else
-                                        <li class="cart-empty"> السلة فارغة</li>
-                                    @endif
-                                </ul>
-                            </li>
-                        </ul>
-                        <!-- ***** Logo End ***** -->
-                        <!-- ***** Menu Start ***** -->
-                        <ul class="nav">
-                            @if (Auth::user() && Auth::user()->role == 'admin')
-                                <li class="scroll-to-section"><a href="{{ route('dashboard') }}">لوحة التحكم</a></li>
-                            @endif
-                            <li class="scroll-to-section"><a href="#top" class="active">الرئيسية</a></li>
-                            <li class="scroll-to-section"><a href="#men">المنتجات</a></li>
-                            <li class="scroll-to-section"><a href="#women">قطع الغيار</a></li>
-                            <li class="scroll-to-section"><a href="#kids">الاقسام</a></li>
-                            <li class="scroll-to-section"><a href="#contact">تواصل معنا</a></li>
-                            <li class="submenu">
-                                <a href="javascript:;">الصفحات</a>
-                                <ul>
-                                    <li><a href="{{ route('products') }}">كل المنتجات</a></li>
-                                    <li><a href="{{ route('about') }}">من نحن</a></li>
-                                </ul>
-                            </li>
+                                    @endforeach
+                                    <li><a href="{{ route('cart') }}" class="btn btn-sm btn-primary w-100">عرض الكل</a>
+                                    </li>
+                                @else
+                                    <li class="text-center">السلة فارغة</li>
+                                @endif
+                            </ul>
+                        </li>
 
-                            <li class="submenu">
-                                <a href="javascript:;"><i
-                                        class="fa-solid fa-user fa-xl"></i>{{ Auth::user()->name ?? '' }}</a>
-                                <ul>
-                                    <li><a href="{{ route('login') }}">تسجيل الدخول</a></li>
-                                    <li><a href="{{ route('register') }}">انشاء حساب</a></li>
-                                    <form method="POST" action="{{ route('logout') }}">
-                                        @csrf
-                                        <button type="submit" class="dropdown-item btn bg-white">
-                                            <i class="fas fa-sign-out-alt me-2"></i> تسجيل الخروج
-                                        </button>
-                                    </form>
+                        <!-- search -->
+                        <li class="nav-item mx-3">
+                            <a href="#" class="nav-link" id="searchToggle"><i class="fa fa-search"></i></a>
+                            <form action="{{ route('products.search') }}" method="GET"
+                                class="d-none position-absolute bg-white p-2 shadow rounded" id="searchForm"
+                                style="top:60px; right:10px; z-index:1000; width: 250px;">
+                                <div class="input-group">
+                                    <input type="text" name="query" class="form-control"
+                                        placeholder="ابحث عن منتج..." required>
+                                    <button type="submit" class="btn btn-primary"><i
+                                            class="fa fa-search"></i></button>
+                                </div>
+                            </form>
+                        </li>
 
-                                </ul>
-                            </li>
-
-
-                        </ul>
-
-                        <a class='menu-trigger'>
-                            <span>Menu</span>
-                        </a>
-                        <!-- ***** Menu End ***** -->
-
-                    </nav>
-
+                        <!-- account -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-bs-toggle="dropdown">
+                                <i class="fa-solid fa-user"></i> {{ Auth::user()->name ?? '' }}
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                <li><a class="dropdown-item" href="{{ route('login') }}">تسجيل الدخول</a></li>
+                                <li><a class="dropdown-item" href="{{ route('register') }}">إنشاء حساب</a></li>
+                                @if (Auth::check())
+                                    <li>
+                                        <form method="POST" action="{{ route('logout') }}">
+                                            @csrf
+                                            <button type="submit" class="dropdown-item">تسجيل الخروج</button>
+                                        </form>
+                                    </li>
+                                @endif
+                            </ul>
+                        </li>
+                    </ul>
                 </div>
-
-            </div>
+            </nav>
         </div>
     </header>
+
     <!-- ***** Header Area End ***** -->
 
     <div class="mt-5">
@@ -256,18 +278,16 @@
             });
         });
     </script>
+
     {{-- cart   --}}
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const cartMenu = document.querySelector(".cart-menu");
             const cartToggle = cartMenu.querySelector(".cart-toggle");
-
             cartToggle.addEventListener("click", function(e) {
                 e.preventDefault();
                 cartMenu.classList.toggle("open");
             });
-
-            // يقفل القائمة لو ضغطت برة
             document.addEventListener("click", function(e) {
                 if (!cartMenu.contains(e.target)) {
                     cartMenu.classList.remove("open");
@@ -275,6 +295,17 @@
             });
         });
     </script>
+
+    {{-- search  --}}
+    <script>
+        document.getElementById('searchToggle').addEventListener('click', function(e) {
+            e.preventDefault();
+            let form = document.getElementById('searchForm');
+            form.classList.toggle('d-none');
+        });
+    </script>
+
+
 
 
 
