@@ -180,9 +180,9 @@
                 <div class="col-lg-3">
                     <h4>الوصول الينا</h4>
                     <ul>
-                        <li><a href="#">2009 امتداد شارع جيهان بعد دار الضيافه شارع زهور هولندا</a></li>
+                        <li><a href="#"> امتداد شارع جيهان بعد دار الضيافه شارع زهور هولندا</a></li>
                         <li><a href="#">info@tester.com</a></li>
-                        <li><a href="https://wa.me/2010020258177">010-020-0340</a></li>
+                        <li><a href="https://wa.me/01554866941">015-548-66941</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3">
@@ -203,27 +203,32 @@
                 </div>
                 <div class="col-lg-12">
                     <div class="under-footer">
-                        <p>حقوق النشر © 2025 شركة تستر لصيانة وبيع كل ما يخص اللاب توب والأجهزة المستوردة. جميع الحقوق
-                            محفوظة.
-                            <br>تصميم: <a href="https://www.facebook.com/share/17NEDsze1R/" target="_blank"
-                                title="Backend devolper">Mahmoud Ebrahim</a>
-                        </p>
-                        <ul>
-                            <li><a href="#" target="_blank" class="text-primary"><i
-                                        class="fab fa-facebook-f"></i></a></li>
-                            <li>
-                                <a href="https://wa.me/2010020258177" target="_blank" class="text-success">
-                                    <i class="fab fa-whatsapp fa-lg"></i>
-                                </a>
-
-                            </li>
-                            <li><a href="#"><i class="fab fa-tiktok"></i></a></li>
-                            <li>
-                                <a href="https://www.instagram.com/ahmed.r2fat.1192?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                        <ul class="mb-3">
+                            <li><a href="https://www.facebook.com/share/15LXLfbLJc/" target="_blank" class="text-primary"><i
+                                class="fab fa-facebook-f"></i></a></li>
+                                <li>
+                                    <a href="https://wa.me/01554866941" target="_blank" class="text-success">
+                                        <i class="fab fa-whatsapp fa-lg"></i>
+                                    </a>
+                                    
+                                </li>
+                                <li><a href="https://www.tiktok.com/@tester9471?_t=ZS-8zmaHzQWN62&_r=1"><i class="fab fa-tiktok"></i></a></li>
+                                <li>
+                                    <a href="https://www.instagram.com/ahmed.r2fat.1192?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
                                     target="_blank" class="text-danger">
                                     <i class="fab fa-instagram"></i></a>
-                            </li>
-                        </ul>
+                                </li>
+                            </ul>
+
+                            <p>حقوق النشر © 2025 شركة تستر لصيانة وبيع كل ما يخص اللاب توب والأجهزة المستوردة. جميع الحقوق
+                                محفوظة.
+    
+                                <br>تصميم: <a href="https://wa.me/201004976135" target="_blank"
+                                    title="Backend devolper">Mahmoud Ebrahim</a>
+                                    <span class="fa-stack">
+                            </span>
+                            </p>
+                        
                     </div>
                 </div>
             </div>
@@ -304,12 +309,4 @@
             form.classList.toggle('d-none');
         });
     </script>
-
-
-
-
-
-
 </body>
-
-</html>

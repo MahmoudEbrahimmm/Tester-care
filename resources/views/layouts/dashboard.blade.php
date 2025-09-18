@@ -56,6 +56,7 @@
             </form>
         </ul>
     </li>
+    
     <x-notification />
 
 </ul>
@@ -75,9 +76,10 @@
                             لوحة التحكم
                         </a>
                         <a href="{{route('dashboard.spares.index')}}" class="nav-link">صيانة اجهزة العملاء</a>
+                        @if(Auth::check() && Auth::user()->role === "admin")
                         <a href="{{ route('dashboard.users.index') }}" class="nav-link">المستخدمين</a>
-
                         <a href="{{ route('dashboard.categories.index') }}" class="nav-link">الاقسام</a>
+                        @endif
 
                         <a href="{{ route('dashboard.products.index') }}" class="nav-link">المنتجات</a>
                         <a href="{{ route('dashboard.orders.index') }}" class="nav-link">طلبات الزبائن</a>

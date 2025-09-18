@@ -21,7 +21,7 @@
                 <div class="col-xl-3 col-md-6">
                     <div class="card bg-success text-white mb-4">
                         <div class="card-body"> إجمالي عدد المنتجات: {{ \App\Models\Product::count() }} </div>
-                        <div class="card-footer"><a href="{{ route('dashboard.categories.index') }}" class="nav-link">عرض
+                        <div class="card-footer"><a href="{{ route('dashboard.products.index') }}" class="nav-link">عرض
                                 الجدول</a></div>
                     </div>
                 </div>

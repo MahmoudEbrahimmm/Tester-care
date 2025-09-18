@@ -1,4 +1,4 @@
-<li class="nav-item dropdown">
+<li class="nav-item dropdown p-1 mx-3">
         <a class="nav-link position-relative" href="#" id="notificationsDropdown" role="button" 
            data-bs-toggle="dropdown" aria-expanded="false">
             <i class="fa-solid fa-bell fa-xl"></i>

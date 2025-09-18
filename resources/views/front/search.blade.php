@@ -39,12 +39,13 @@
                                 <p class="mb-0">{{ $spare->name }}</p>
                             </div>
                             <div class="mb-3">
-                                <h6 class="fw-bold">الهاتف:</h6>
-                                <p class="mb-0">{{ $spare->phone }}</p>
+                                <h6 class="fw-bold">هاتف الشركة للتواصل:</h6>
+                                <li><a href="https://wa.me/01554866941">015-548-66941</a></li>
+                                
                             </div>
                             <div class="mb-3">
-                                <h6 class="fw-bold">العنوان:</h6>
-                                <p class="mb-0">{{ $spare->address }}</p>
+                                <h6 class="fw-bold">عنوان الشركة: </h6>
+                                <p class="mb-0"> امتداد شارع جيهان بعد دار الضيافه شارع زهور هولندا</p>
                             </div>
 
                             <hr>
