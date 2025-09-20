@@ -87,3 +87,31 @@
     .cart-menu.open .cart-dropdown {
         display: block;
     }
+ul.dropdown-menu,
+.dropdown-menu.show {
+    background: #fff !important;
+    background-color: #fff !important;
+    border: 1px solid #ddd !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+    z-index: 2000 !important;
+}
+
+.dropdown-menu .dropdown-item {
+    color: #000 !important;
+    background: transparent !important;
+}
+
+.dropdown-menu .dropdown-item:hover {
+    background: #f8f9fa !important;
+    color: #000 !important;
+}
+
+@media (max-width: 991px) {
+    .navbar-collapse {
+        background: #fff !important;
+        padding: 10px;
+        border-radius: 5px;
+    }
+}
+
+

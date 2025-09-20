@@ -8,8 +8,6 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="inner-content">
-                        <h2> {{ $product->name }} </h2>
-                        <span>{{ $product->category->name }} &amp; {{ $product->description }}</span>
                     </div>
                 </div>
             </div>
