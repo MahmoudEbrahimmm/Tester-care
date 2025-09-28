@@ -1,7 +1,7 @@
 <div class="item">
     <div class="thumb">
         
-        <img src="{{ asset('storage/' . $category->image) }}" alt="">
+        <img src="{{ asset('uploads/' . $category->image) }}" alt="">
     </div>
     <div class="down-content">
         <h4> {{ $category->name }} </h4>

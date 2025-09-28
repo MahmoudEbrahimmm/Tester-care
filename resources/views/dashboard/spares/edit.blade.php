@@ -99,7 +99,7 @@
                 <label class="form-label">صورة الجهاز</label>
                 @if ($spare->image)
                     <div class="mb-2">
-                        <img src="{{ asset('storage/' . $spare->image) }}" alt="صورة الجهاز" width="100" class="img-thumbnail">
+                        <img src="{{ asset('uploads/' . $spare->image) }}" alt="صورة الجهاز" width="100" class="img-thumbnail">
                     </div>
                 @endif
                 <input type="file" name="image"

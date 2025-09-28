@@ -18,7 +18,7 @@
                     @foreach (session('cart') as $key => $value)
                         @php $total += $value['price'] * $value['quantity']; @endphp
                         <tr data-id="{{ $key }}">
-                            <td><img src="{{ asset('storage/' . $value['image']) }}" class="rounded shadow-sm"
+                            <td><img src="{{ asset('uploads/' . $value['image']) }}" class="rounded shadow-sm"
                                     alt="Product" style="width: 100px;"></td>
                             <td>{{ $value['name'] }}</td>
                             <td>{{ $value['price'] }} ج.م</td>

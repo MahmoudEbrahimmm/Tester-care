@@ -24,7 +24,7 @@
                             @foreach ($categories as $category)
                                 <td>
                                     @if ($category->image)
-                                        <img src="{{ asset('storage/' . $category->image) }}" width="100"
+                                        <img src="{{ asset('uploads/' . $category->image) }}" width="100"
                                             class="img-thumbnail">
                                     @else
                                         <img src="{{ asset('images/default.png') }}" width="100" class="img-thumbnail">

@@ -100,7 +100,7 @@
                             @if (session('cart', []))
                                 @foreach (session('cart', []) as $value)
                                     <li class="d-flex align-items-center mb-2">
-                                        <img src="{{ asset('storage/' . $value['image']) }}" alt=""
+                                        <img src="{{ asset('uploads/' . $value['image']) }}" alt=""
                                             width="40" class="me-2 rounded">
                                         <div>
                                             <strong>{{ $value['name'] }}</strong><br>

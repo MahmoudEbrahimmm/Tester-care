@@ -6,6 +6,6 @@
                 <i class="fab fa-instagram"></i>
             </a>
         </div>
-        <img src="{{ asset('storage/'.$product->image) }}" style="width:80px" alt="">
+        <img src="{{ asset('uploads/'.$product->image) }}" style="width:80px" alt="">
     </div>
 </div>

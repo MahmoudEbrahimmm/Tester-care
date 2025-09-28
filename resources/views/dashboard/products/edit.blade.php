@@ -41,7 +41,7 @@
                         <input type="file" name="image" id="image"
                             class="form-control @error('image') is-invalid @enderror">
                         @if ($product->image)
-                            <img src="{{ asset('storage/' . $product->image) }}" alt="صورة المنتج" width="100"
+                            <img src="{{ asset('uploads/' . $product->image) }}" alt="صورة المنتج" width="100"
                                 class="mt-2">
                         @endif
                     </div>

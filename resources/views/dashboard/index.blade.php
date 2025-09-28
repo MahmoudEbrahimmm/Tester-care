@@ -95,7 +95,7 @@
                                                     <tr>
                                                         <td>
                                                             @if ($item->product->image)
-                                                                <img src="{{ asset('storage/' . $item->product->image) }}"
+                                                                <img src="{{ asset('uploads/' . $item->product->image) }}"
                                                                     alt="" width="60">
                                                             @else
                                                                 لا يوجد صورة

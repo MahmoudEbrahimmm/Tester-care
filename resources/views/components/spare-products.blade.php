@@ -7,7 +7,7 @@
                 <li><a href="{{route('add.to.cart',$product->id)}}"><i class="fa fa-shopping-cart"></i></a></li>
             </ul>
         </div>
-        <img src="{{ asset('storage/'.$product->image) }}" alt="">
+        <img src="{{ asset('uploads/'.$product->image) }}" alt="">
     </div>
     <div class="down-content">
         <h4>{{ $product->name }} </h4>

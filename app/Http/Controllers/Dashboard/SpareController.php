@@ -46,7 +46,7 @@ class SpareController extends Controller
 
         if ($request->hasFile('image')) {
             $file = $request->file('image');
-            $path = $file->store('uploads/spares', 'public');
+            $path = $file->store('spares', 'uploads');
             $data['image'] = $path;
         }
 
@@ -92,14 +92,14 @@ class SpareController extends Controller
 
     if ($request->hasFile('image')) {
         $file = $request->file('image');
-        $path = $file->store('uploads/spares', 'public');
+        $path = $file->store('spares', 'uploads');
         $data['image'] = $path;
     }
 
     $spare->update($data);
 
     if ($old_image && isset($data['image'])) {
-        Storage::disk('public')->delete($old_image);
+        Storage::disk('uploads')->delete($old_image);
     }
 
 

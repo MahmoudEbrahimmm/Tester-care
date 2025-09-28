@@ -4,7 +4,7 @@
             <div class="inner-content">
                 {{-- <h4 class="text-info">{{ $category->name }}</h4> --}}
             </div>
-            <img src="{{ asset('storage/'. $category->image) }}">
+            <img src="{{ asset('uploads/'. $category->image) }}">
         </div>
     </div>
 </div>

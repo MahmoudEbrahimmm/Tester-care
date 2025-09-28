@@ -22,7 +22,7 @@
                             @foreach ($products as $product)
                                 <td>
                                     @if ($product->image)
-                                        <img src="{{ asset('storage/' . $product->image) }}" width="100"
+                                        <img src="{{ asset('uploads/' . $product->image) }}" width="100"
                                             class="img-thumbnail">
                                     @else
                                         <img src="{{ asset('images/default.png') }}" width="100" class="img-thumbnail">

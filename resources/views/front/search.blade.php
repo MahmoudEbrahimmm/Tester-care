@@ -9,7 +9,7 @@
                 <!-- كارت الجهاز -->
                 <div class="col-md-4 col-sm-6">
                     <div class="card border-0 shadow-sm rounded-4 h-100 p-3">
-                        <img src="{{ asset('storage/' . $spare->image) }}" 
+                        <img src="{{ asset('uploads/' . $spare->image) }}" 
                              class="card-img-top rounded-top-4" 
                              style="max-height: 220px; object-fit: cover;">
                         <div class="card-body text-center">

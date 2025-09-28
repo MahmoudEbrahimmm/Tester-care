@@ -22,7 +22,7 @@
             <div class="row">
                 <div class="col-lg-8">
                     <div class="left-images">
-                        <img src="{{ asset('storage/' . $product->image) }}" style="width:60%;" alt="">
+                        <img src="{{ asset('uploads/' . $product->image) }}" style="width:60%;" alt="">
                     </div>
                 </div>
                 <div class="col-lg-4 mt-5">

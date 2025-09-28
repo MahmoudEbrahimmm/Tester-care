@@ -1,59 +1,97 @@
-<x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
-        @csrf
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>انشاء حساب جديد</title>
+  <link rel="shortcut icon" href="{{ asset('favicon.png') }}" type="image/png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-        <!-- Name -->
-        <div>
-            <x-input-label for="name" :value="__('الاسم')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+  <style>
+    body {
+      background-color: #1f2937; /* bg-gray-900 equivalent */
+      color: #ffffff;
+    }
+    .form-container {
+      background-color: #2d3748; /* bg-gray-800 equivalent */
+      border-radius: 0.75rem;
+      box-shadow: 0 10px 15px rgba(0,0,0,0.3);
+      padding: 2rem;
+      max-width: 600px;
+      width: 100%;
+    }
+    .form-control:focus {
+      box-shadow: 0 0 0 0.25rem rgba(59, 130, 246, 0.5);
+      border-color: #3b82f6;
+    }
+    a {
+      color: #60a5fa;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body class="d-flex align-items-center justify-content-center min-vh-100">
+
+  <div class="form-container">
+    <h2 class="text-center mb-4 fw-bold">انشاء حساب جديد</h2>
+
+    @session('error')
+      <div class="text-danger mb-2">{{ session('error') }}</div>
+    @enderror
+
+    <form action="{{ url('register') }}" method="POST">
+      @csrf
+      <div class="row g-3">
+        <div class="col-12">
+          <label for="name" class="form-label">الاسم</label>
+          <input type="text" id="name" name="name" autofocus autocomplete="name" value="{{ old('name') }}" class="form-control bg-dark text-white border-secondary">
+          @error('name')
+            <div class="text-danger small mt-1">{{ $message }}</div>
+          @enderror
         </div>
 
-        <!-- Email Address -->
-        <div class="mt-4">
-            <x-input-label for="email" :value="__('البريد الالكتروني')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+        <div class="col-md-6">
+          <label for="email" class="form-label">البريد الالكتروني</label>
+          <input type="email" id="email" name="email" autocomplete="off" value="{{ old('email') }}" class="form-control bg-dark text-white border-secondary">
+          @error('email')
+            <div class="text-danger small mt-1">{{ $message }}</div>
+          @enderror
         </div>
 
-        <!-- Phone -->
-        <div>
-            <x-input-label for="phone" class="mb-3" :value="__('تليفون')" />
-            <x-text-input id="phone" class="block mt-1 w-full" type="text" name="phone" :value="old('phone')" required autofocus autocomplete="phone" />
-            <x-input-error :messages="$errors->get('phone')" class="mt-2" />
+        <div class="col-md-6">
+          <label for="phone" class="form-label">الهاتف</label>
+          <input type="text" id="phone" name="phone" autocomplete="off" value="{{ old('phone') }}" class="form-control bg-dark text-white border-secondary">
+          @error('phone')
+            <div class="text-danger small mt-1">{{ $message }}</div>
+          @enderror
         </div>
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('كلمة المرور')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+        <div class="col-md-6">
+          <label for="password" class="form-label">كلمة المرور</label>
+          <input type="password" id="password" name="password" autocomplete="new-password" class="form-control bg-dark text-white border-secondary">
+          @error('password')
+            <div class="text-danger small mt-1">{{ $message }}</div>
+          @enderror
         </div>
 
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('تاكيد كلمة المرور')" />
-
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                            type="password"
-                            name="password_confirmation" required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+        <div class="col-md-6">
+          <label for="confirm-password" class="form-label">تاكيد كلمة المرور</label>
+          <input type="password" id="confirm-password" name="password_confirmation" autocomplete="new-password" class="form-control bg-dark text-white border-secondary">
         </div>
+      </div>
 
-        <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('login') }}">
-                {{ __('مسجل سابقا؟') }}
-            </a>
+      <div class="mt-4">
+        <button type="submit" class="btn btn-primary w-100">انشاء</button>
+      </div>
 
-            <x-primary-button class="ms-4">
-                {{ __('Register') }}
-            </x-primary-button>
-        </div>
+      <p class="mt-3 text-center small">
+        هل لديك حساب من قبل؟ <a href="{{ route('login') }}">تسجيل الدخول</a>
+      </p>
     </form>
-</x-guest-layout>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>     

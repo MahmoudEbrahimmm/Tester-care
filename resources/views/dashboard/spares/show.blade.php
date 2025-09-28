@@ -28,7 +28,7 @@
                         <tr>
                             <td>
                                 @if ($spare->image)
-                                    <img src="{{ asset('storage/' . $spare->image) }}" alt="صورة الجهاز" 
+                                    <img src="{{ asset('uploads/' . $spare->image) }}" alt="صورة الجهاز" 
                                         style="width: 450px;" class="img-thumbnail">
                                 @else
                                     

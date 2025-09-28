@@ -98,7 +98,7 @@
                                         </ul>
                                     </div>
                                 </div>
-                                <img src="{{ asset('storage/' . $category->image) }}" alt="{{ $category->name }}"
+                                <img src="{{ asset('uploads/' . $category->image) }}" alt="{{ $category->name }}"
                                     class="img-fluid rounded-top">
                             </div>
                             <div class="down-content p-3">

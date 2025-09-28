@@ -48,7 +48,7 @@
 
                     <div class="mb-3">
                         @if ($category->image)
-                            <img src="{{ asset('storage/' . $category->image) }}" alt="" height="80">
+                            <img src="{{ asset('uploads/' . $category->image) }}" alt="" height="80">
                         @endif
                         
                         

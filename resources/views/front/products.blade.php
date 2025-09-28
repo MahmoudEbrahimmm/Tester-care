@@ -30,7 +30,7 @@
             <div class="col-lg-4 col-md-6 mb-3">
                 <div class="card h-100 shadow-sm">
                     <!-- صورة المنتج -->
-                    <img src="{{ $product->image ? asset('storage/'.$product->image) : asset('front/assets/images/no-image.png') }}"
+                    <img src="{{ $product->image ? asset('uploads/'.$product->image) : asset('front/assets/images/no-image.png') }}"
                          class="card-img-top" 
                          alt="{{ $product->name }}" 
                          style="height: 250px; object-fit: cover;">

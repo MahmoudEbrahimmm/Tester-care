@@ -49,7 +49,7 @@ class CategoriesController extends Controller
 
         if ($request->hasFile('image')) {
             $file = $request->file('image');
-            $path = $file->store('uploads/categories/', 'public');
+            $path = $file->store('categories/', 'uploads');
             $data['image'] = $path;
         }
 
@@ -99,13 +99,13 @@ class CategoriesController extends Controller
 
         if ($request->hasFile('image')) {
             $file = $request->file('image');
-            $path = $file->store('uploads/categories/', 'public');
+            $path = $file->store('categories/', 'uploads');
             $data['image'] = $path;
         }
 
         $category->update($data);
         if ($old_image && isset($data['image'])) {
-            Storage::disk('public')->delete($old_image);
+            Storage::disk('uploads')->delete($old_image);
         }
         return redirect()->route('dashboard.categories.index')
             ->with('success', '!تم تحديث بيانات القسم بنجاح');

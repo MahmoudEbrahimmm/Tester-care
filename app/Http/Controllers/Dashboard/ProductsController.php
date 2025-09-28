@@ -50,7 +50,7 @@ class ProductsController extends Controller
         
         if ($request->hasFile('image')) {
             $file = $request->file('image');
-            $path = $file->store('uploads/products', 'public');
+            $path = $file->store('products', 'uploads');
             $data['image'] = $path;
         }
 
@@ -98,14 +98,14 @@ public function update(Request $request, string $id)
 
     if ($request->hasFile('image')) {
         $file = $request->file('image');
-        $path = $file->store('uploads/products', 'public');
+        $path = $file->store('products', 'uploads');
         $data['image'] = $path;
     }
 
     $product->update($data);
 
     if ($old_image && isset($data['image'])) {
-        Storage::disk('public')->delete($old_image);
+        Storage::disk('uploads')->delete($old_image);
     }
 
     return redirect()->route('dashboard.products.index')

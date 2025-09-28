@@ -1,45 +1,83 @@
-<x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تسجيل الدخول</title>
+  <link rel="shortcut icon" href="{{ asset('favicon.png') }}" type="image/png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
+  <style>
+    body {
+      background-color: #1f2937; /* bg-gray-900 */
+      color: #ffffff;
+    }
+    .form-container {
+      background-color: #2d3748; /* bg-gray-800 */
+      border-radius: 0.75rem;
+      box-shadow: 0 10px 15px rgba(0,0,0,0.3);
+      padding: 2rem;
+      max-width: 400px;
+      width: 100%;
+    }
+    .form-control:focus {
+      box-shadow: 0 0 0 0.25rem rgba(59, 130, 246, 0.5);
+      border-color: #3b82f6;
+    }
+    a {
+      color: #60a5fa;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body class="d-flex align-items-center justify-content-center min-vh-100">
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('البريد الالكتروني')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
+  <div class="form-container">
+    <h2 class="text-center mb-4 fw-bold">تسجيل الدخول</h2>
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('كلمة المرور')" />
+    @if(session('error'))
+      <div class="text-danger mb-2">{{ session('error') }}</div>
+    @endif
 
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
+    <form action="{{ route('login') }}" method="POST">
+      @csrf
 
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
+      <!-- البريد الإلكتروني -->
+      <div class="mb-3">
+        <label for="email" class="form-label">البريد الإلكتروني</label>
+        <input type="email" id="email" name="email" value="{{ old('email') }}" class="form-control bg-dark text-white border-secondary" required autofocus>
+        @error('email')
+          <div class="text-danger small mt-1">{{ $message }}</div>
+        @enderror
+      </div>
 
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" name="remember">
-                <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Remember me') }}</span>
-            </label>
-        </div>
+      <!-- كلمة المرور -->
+      <div class="mb-3">
+        <label for="password" class="form-label">كلمة المرور</label>
+        <input type="password" id="password" name="password" class="form-control bg-dark text-white border-secondary" required>
+        @error('password')
+          <div class="text-danger small mt-1">{{ $message }}</div>
+        @enderror
+      </div>
 
-        <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('register') }}">
-                {{ __('لم تسجل مسبقا؟') }}
-            </a>
+      <!-- تذكرني -->
+      <div class="form-check mb-3">
+        <input type="checkbox" name="remember" id="remember" class="form-check-input">
+        <label for="remember" class="form-check-label text-white">تذكرني</label>
+      </div>
 
-            <x-primary-button class="ms-3">
-                {{ __('Log in') }}
-            </x-primary-button>
-        </div>
+      <div class="mt-4">
+        <button type="submit" class="btn btn-primary w-100">تسجيل الدخول</button>
+      </div>
+
+      <p class="mt-3 text-center small">
+        لا تملك حساب؟ <a href="{{ route('register') }}">انشاء حساب جديد</a>
+      </p>
     </form>
-</x-guest-layout>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

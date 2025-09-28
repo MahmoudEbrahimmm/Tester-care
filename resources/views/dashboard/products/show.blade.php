@@ -23,7 +23,7 @@
                         <tr>
                             <td>
                                 @if ($item->image)
-                                    <img src="{{ asset('storage/' . $item->image) }}" width="150" class="img-thumbnail">
+                                    <img src="{{ asset('uploads/' . $item->image) }}" width="150" class="img-thumbnail">
                                 @else
                                     <img src="{{ asset('images/default.png') }}" width="150" class="img-thumbnail">
                                 @endif

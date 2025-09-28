@@ -16,7 +16,7 @@ class HomeController extends Controller
         $products = Product::all();
         $categories = Category::all();
         $products_media = Product::latestProduct(6)->get();
-        $category_home = Category::latestCategory(4)->get();
+        $category_home = Category::latestCategory(2)->get();
         $productsOfCateory = Product::ofCategoryName('الصيانة')->get();
 
         return view('front.index', compact(
