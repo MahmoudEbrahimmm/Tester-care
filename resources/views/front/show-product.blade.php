@@ -2,74 +2,84 @@
 @section('title-url', 'صفحة تفاصيل المنتج')
 @section('content')
 
-    <!-- ***** Main Banner Area Start ***** -->
-    <div class="" id="top">
+    <!-- ***** Product Details Starts ***** -->
+    <section class="py-5" id="product" dir="rtl">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="inner-content">
+            <div class="row g-4 align-items-center">
+
+                <!-- صورة المنتج -->
+                <div class="col-lg-6 text-center">
+                    <div class="card shadow-lg border-0 rounded-4 p-3">
+                        <img src="{{ asset('uploads/' . $product->image) }}" 
+                             class="img-fluid rounded-4" 
+                             style="max-height: 450px; object-fit: contain;" 
+                             alt="{{ $product->name }}">
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-    <!-- ***** Main Banner Area End ***** -->
 
-
-    <!-- ***** Product Area Starts ***** -->
-    <section class="section" id="product">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="left-images">
-                        <img src="{{ asset('uploads/' . $product->image) }}" style="width:60%;" alt="">
-                    </div>
-                </div>
-                <div class="col-lg-4 mt-5">
-                    <div class="right-content">
-                        <h4>{{ $product->name }} </h4>
-                        <span><h3>$ {{ $product->price }}</h3></span>
-                        <ul class="stars">
-                            <ul class="list-unstyled d-flex gap-3">
-    <li>
-        <a href="https://www.facebook.com/share/15LXLfbLJc/" target="_blank" class="text-primary">
-            <i class="fab fa-facebook-f fa-lg"></i>
-        </a>
-    </li>
-    <li>
-        <a href="https://wa.me/01554866941" target="_blank" class="text-success">
-            <i class="fab fa-whatsapp fa-lg"></i>
-        </a>
-    </li>
-    <li>
-        <a href="https://www.tiktok.com/@tester9471?_t=ZS-8zmaHzQWN62&_r=1" target="_blank" class="text-dark">
-            <i class="fab fa-tiktok fa-lg"></i>
-        </a>
-    </li>
-    <li>
-        <a href="https://www.instagram.com/ahmed.r2fat.1192" target="_blank" class="text-danger">
-            <i class="fab fa-instagram fa-lg"></i>
-        </a>
-    </li>
-</ul>
-
-                        </ul><br>
-                        <h5 class="mb-">{{ $product->description }}</h5>
-                        <div class="quote">
-                            <i class="fa fa-quote-left"></i>
-                            <p>{{ $product->category->name }}</p>
-                        </div>
+                <!-- تفاصيل المنتج -->
+                <div class="col-lg-6">
+                    <div class="card border-0 shadow-sm rounded-4 p-4 text-end">
                         
-                        <div class="total">
-                            <div><a href="{{ route('add.to.cart', $product->id) }}" class="btn btn-primary w-100 text-white mt-3">اضف الي السلة</a>
-                            <div><a href="{{ route('home') }}" class="btn btn-secondary w-100 text-white mt-3">الصفحة الرئيسية</a>
-                            </div>
+                        <!-- الاسم + السعر -->
+                        <h2 class="fw-bold mb-3">{{ $product->name }}</h2>
+                        <h4 class="text-success fw-bolder mb-4">$ {{ $product->price }}</h4>
+
+                        <!-- أيقونات المشاركة -->
+                        <div class="mb-4">
+                            <h6 class="fw-bold mb-3">شارك المنتج</h6>
+                            <ul class="list-unstyled d-flex gap-3 fs-5 justify-content-end">
+                                <li>
+                                    <a href="https://www.facebook.com/share/15LXLfbLJc/" target="_blank" class="text-primary">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://wa.me/01554866941" target="_blank" class="text-success">
+                                        <i class="fab fa-whatsapp"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.tiktok.com/@tester9471?_t=ZS-8zmaHzQWN62&_r=1" target="_blank" class="text-dark">
+                                        <i class="fab fa-tiktok"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.instagram.com/ahmed.r2fat.1192" target="_blank" class="text-danger">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                </li>
+                            </ul>
                         </div>
+
+                        <!-- الوصف -->
+                        <p class="text-muted fs-6 mb-4">{{ $product->description }}</p>
+
+                        <!-- الفئة -->
+                        <div class="bg-light p-3 rounded-3 mb-4 d-flex align-items-center justify-content-end">
+                            <span class="fw-semibold">{{ $product->category->name }}</span>
+                            <i class="fa fa-quote-left text-primary me-2"></i>
+                        </div>
+
+                        <!-- الأزرار -->
+                        <div class="d-grid gap-3">
+                            <a href="{{ route('add.to.cart', $product->id) }}" 
+                               class="btn btn-primary btn-lg rounded-pill shadow-sm d-flex align-items-center justify-content-center gap-2">
+                                <i class="fa fa-shopping-cart"></i> 
+                                <span>أضف إلى السلة</span>
+                            </a>
+                            <a href="{{ route('home') }}" 
+                               class="btn btn-outline-secondary btn-lg rounded-pill d-flex align-items-center justify-content-center gap-2">
+                                <i class="fa fa-home"></i> 
+                                <span>الصفحة الرئيسية</span>
+                            </a>
+                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- ***** Product Area Ends ***** -->
+    <!-- ***** Product Details Ends ***** -->
 
 @endsection

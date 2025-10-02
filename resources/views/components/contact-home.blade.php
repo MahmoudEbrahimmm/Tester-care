@@ -6,7 +6,6 @@
                     <iframe
                         src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1709.2640925724656!2d31.36123434743926!3d31.039392441182187!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2seg!4v1758191652632!5m2!1sen!2seg"
                         width="100%" height="400px" frameborder="0" style="border:0" allowfullscreen></iframe>
-                    <!-- You can simply copy and paste "Embed a map" code from Google Maps for any location. -->
 
                 </div>
             </div>

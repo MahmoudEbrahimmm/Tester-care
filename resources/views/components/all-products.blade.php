@@ -7,6 +7,7 @@
             </ul>
         </div>
         <img src="{{ asset('uploads/' . $product->image) }}" alt="">
+        
     </div>
     <div class="down-content">
         <h4> {{ $product->name }} </h4>
