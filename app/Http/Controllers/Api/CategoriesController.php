@@ -18,7 +18,7 @@ class CategoriesController extends Controller
         $data = [
             "msg" => "return all data category table",
             "status" => 200,
-            "data" => $categories,
+            "data" => $categories
         ];
         return response()->json($data);
     }
@@ -44,7 +44,7 @@ class CategoriesController extends Controller
         }
     }
 
-    public function create(Request $request)
+    public function store(Request $request)
     {
         $validate = Validator::make($request->all(), [
             'name'        => 'required|string|max:255',
@@ -65,7 +65,7 @@ class CategoriesController extends Controller
         $data = $request->only(['name', 'slug', 'parent_id', 'description']);
 
         if ($request->hasFile('image')) {
-            $data['image'] = $request->file('image')->store('uploads/categories', 'public');
+            $data['image'] = $request->file('image')->store('categories', 'uploads');
         }
 
         $category = Category::create($data);
@@ -95,14 +95,14 @@ class CategoriesController extends Controller
 
         if ($request->hasFile('image')) {
             $file = $request->file('image');
-            $path = $file->store('uploads/categories', 'public');
+            $path = $file->store('categories', 'uploads');
             $data['image'] = $path;
         }
 
         $category->update($data);
 
         if ($old_image && isset($data['image'])) {
-            Storage::disk('public')->delete($old_image);
+            Storage::disk('uploads')->delete($old_image);
         }
 
         return response()->json([
@@ -115,25 +115,23 @@ class CategoriesController extends Controller
     public function destroy(string $id)
     {
         $category = Category::find($id);
-
         if (!$category) {
             return response()->json([
-                'msg'    => 'Category not found',
+                'msg' => 'Category not found',
                 'status' => 404,
-                'data'   => null,
+                'data' => null
             ]);
         }
 
-        if ($category->image && Storage::disk('public')->exists($category->image)) {
-            Storage::disk('public')->delete($category->image);
+        if ($category->image && Storage::disk('uploads')->exists($category->image)) {
+            Storage::disk('uploads')->delete($category->image);
         }
 
         $category->delete();
-
         return response()->json([
-            'msg'    => 'Category deleted successfully',
+            'msg' => 'Category deleted successfully',
             'status' => 200,
-            'data'   => null,
+            'data' => null
         ]);
     }
 }

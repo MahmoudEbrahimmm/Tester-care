@@ -13,12 +13,12 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['auth'])->group(function () {
     Route::get('notifications/{id}/read', function ($id) {
         $user = auth()->user();
-        // ابحث في كل إشعاراته (مقروءة أو غير مقروءة) ثم علمها كمقروءة
+        
         $notification = $user->notifications()->find($id);
 
         if ($notification) {
             $notification->markAsRead();
-            // وجه المستخدم إلى الـ URL المخزن داخل Notification إذا موجود
+            
             $url = $notification->data['url'] ?? route('dashboard.orders.index');
             return redirect($url);
         }

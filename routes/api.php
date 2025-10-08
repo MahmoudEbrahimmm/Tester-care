@@ -1,12 +1,15 @@
 <?php
 
 use App\Http\Controllers\Api\CategoriesController;
+use App\Http\Controllers\Api\ProductsController;
+use App\Http\Controllers\Api\SparesController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\ProductController;
 
-Route::get('/categories/allData',[CategoriesController::class,'index']);
-Route::get('/categories/showone/{id}',[CategoriesController::class,'show']);
-Route::post('/categories/store',[CategoriesController::class,'create']);
-Route::put('/categories/update/{id}', [CategoriesController::class, 'update']);
-Route::delete('/categories/delete/{id}', [CategoriesController::class, 'destroy']);
+// Categories
+Route::apiResource('categories',CategoriesController::class);
 
+// Products
+Route::apiResource('products',ProductsController::class);
+
+// Spare
+Route::apiResource('spares',SparesController::class);

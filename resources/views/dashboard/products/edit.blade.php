@@ -14,9 +14,7 @@
                 <form action="{{ route('dashboard.products.update', $product->id) }}" method="POST"
                     enctype="multipart/form-data">
                     @csrf
-                    @method('PATCH')
-
-
+                    @method('PUT')
                     <div class="mb-3">
                         <label for="name" class="mb-2">اسم المنتج</label>
                         <input type="text" name="name" id="name"
