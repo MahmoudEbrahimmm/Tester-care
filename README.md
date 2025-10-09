@@ -1,66 +1,85 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Tester Care API
 
-## About Laravel
+The Tester Care API is a complete backend system designed to manage electronic device repair and maintenance operations.
+It allows tracking of spare parts, managing repair orders, and organizing products and categories efficiently.
+The system is built with Laravel following a clean RESTful architecture that makes it easy to integrate with web or mobile applications.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Project Overview
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+The system includes the following main sections:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Home
+Provides a simple search for devices under repair using their ID.
 
-## Learning Laravel
+Spares
+Manages device repair and maintenance data.
+Includes all CRUD operations such as adding, editing, deleting, and listing device records.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Orders
+Handles customer orders for repair and maintenance services.
+Tracks device status, repair cost, and customer information.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Products
+Manages spare parts and items used in repairs.
+Allows adding, updating, or deleting products, and linking them with categories.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Categories
+Organizes products into logical groups for easier browsing and management.
 
-## Laravel Sponsors
+API Endpoints
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Home Endpoint:
+GET /api/spares/search?query=
+Used to search for a device record by its ID.
 
-### Premium Partners
+Spares Endpoint:
+/api/spares
+Used to manage all device repair records.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+Orders Endpoint:
+/api/orders
+Used to manage customer repair orders.
 
-## Contributing
+Products Endpoint:
+/api/products
+Used to manage products and spare parts.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Categories Endpoint:
+/api/categories
+Used to manage and organize product categories.
 
-## Code of Conduct
+Response Format
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+All API responses are returned in JSON format and contain three main parts:
 
-## Security Vulnerabilities
+Message that describes the result
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Status code (for success or error)
 
-## License
+Data field that contains the response body or null
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Example:
+The API will return a success message when data is found and a clear error message when no record exists.
+
+Purpose
+
+Tester Care API is developed for electronic repair centers to digitize and organize repair operations.
+It helps in managing customers, tracking devices, storing spare part information, and monitoring repair progress.
+It can be easily connected to any admin dashboard or mobile app for complete workflow management.
+
+Technologies Used
+
+Laravel Framework
+
+PHP
+
+MySQL Database
+
+RESTful API Architecture
+
+JSON Response Format
+
+© 2025 Tester Care API
+Developed by Mahmoud Ebrahim
