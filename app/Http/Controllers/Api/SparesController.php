@@ -92,7 +92,7 @@ class SparesController extends Controller
 
     public function update(Request $request, string $id)
     {
-                $validat = Validator::make($request->all(), [
+        $validat = Validator::make($request->all(), [
             'name'      => 'required|string|max:255',
             'phone'     => 'nullable|string|max:20',
             'address'   => 'nullable|string|max:255',
@@ -124,7 +124,7 @@ class SparesController extends Controller
 
         $spare->update($data);
 
-        if($old_image && isset($data['image'])){
+        if ($old_image && isset($data['image'])) {
             Storage::disk('uploads')->delete($old_image);
         }
 
@@ -138,14 +138,14 @@ class SparesController extends Controller
     public function destroy(string $id)
     {
         $spare = Spare::find($id);
-        if(!$spare){
+        if (!$spare) {
             $data = [
                 'msg' => 'Device not found in spare table',
                 'status' => 404,
                 'data' => null
             ];
         }
-        if($spare->image && Storage::disk('uploads')->exists($spare->image)){
+        if ($spare->image && Storage::disk('uploads')->exists($spare->image)) {
             Storage::disk('uploads')->delete($spare->image);
         }
 
@@ -155,5 +155,34 @@ class SparesController extends Controller
             'status' => 200,
             'data' => null
         ]);
+    }
+
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+
+        if (!$query) {
+            return response()->json([
+                'msg' => 'Please provide a search query',
+                'status' => 400,
+                'data' => null
+            ], 400);
+        }
+
+        $spare = Spare::find($query);
+
+        if (!$spare) {
+            return response()->json([
+                'msg' => 'No record found with this ID',
+                'status' => 404,
+                'data' => null
+            ], 404);
+        }
+
+        return response()->json([
+            'msg' => 'Device record found',
+            'status' => 200,
+            'data' => new SpareResource($spare)
+        ], 200);
     }
 }

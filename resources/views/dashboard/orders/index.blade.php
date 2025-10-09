@@ -12,6 +12,7 @@
                 <table class="table">
                     <thead>
                         <tr>
+                            <th>ID</th>
                             <th>الصورة</th>
                             <th>اسم العميل</th>
                             <th>الهاتف</th>
@@ -29,6 +30,7 @@
                         @foreach ($orders as $order)
                             @foreach ($order->items as $item)
                                 <tr>
+                                    <td>{{ $order->id }}</td>
                                     <td>
                                         @if ($item->product->image)
                                             <img src="{{ asset('uploads/' . $item->product->image) }}" alt=""

@@ -107,10 +107,6 @@ class SpareController extends Controller
             ->with('success', 'تم تعديل بيانات الجهاز بنجاح');
     }
 
-
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         $spare = Spare::findOrFail($id);

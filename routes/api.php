@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\CategoriesController;
+use App\Http\Controllers\Api\OrdersController;
 use App\Http\Controllers\Api\ProductsController;
 use App\Http\Controllers\Api\SparesController;
 use Illuminate\Support\Facades\Route;
@@ -13,3 +14,7 @@ Route::apiResource('products',ProductsController::class);
 
 // Spare
 Route::apiResource('spares',SparesController::class);
+Route::post('spares/search',[SparesController::class,'search']);
+
+// Order
+Route::apiResource('orders',OrdersController::class);

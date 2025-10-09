@@ -29,4 +29,3 @@ Route::post('/checkout/store', [CartController::class, 'checkoutStore'])->name('
 
 require __DIR__.'/auth.php';
 require __DIR__.'/dashboard.php';
-
