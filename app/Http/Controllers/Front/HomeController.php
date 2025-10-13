@@ -33,7 +33,7 @@ class HomeController extends Controller
     }
     public function allProducts()
     {
-        $products = Product::all();
+        $products = Product::paginate(8);
         return view('front.products', compact('products'));
     }
     public function about()
@@ -41,13 +41,33 @@ class HomeController extends Controller
         $category_about = Category::latestCategory(3)->get();
         return view('front.about', compact('category_about'));
     }
+
     public function search(Request $request)
     {
-        $query = $request->input('query');
+        $query = trim($request->input('query'));
 
-        $spares = Spare::where('id', 'LIKE', "%{$query}%")->get();
+        $arabicNumbers = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
+        $englishNumbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+        $query = str_replace($arabicNumbers, $englishNumbers, $query);
 
-        return view('front.search', compact('spares', 'query'));
+        $normalize = function ($text) {
+            $text = str_replace(['أ', 'إ', 'آ'], 'ا', $text);
+            $text = str_replace(['ة'], 'ه', $text);
+            return $text;
+        };
+        $queryNormalized = $normalize($query);
+
+        $products = collect();
+        $spares = collect();
+
+        if (is_numeric($query)) {
+            $spares = Spare::where('id', $query)->get();
+        } else {
+            $products = Product::whereRaw("REPLACE(REPLACE(REPLACE(name,'أ','ا'),'إ','ا'),'ة','ه') LIKE ?", ["%{$queryNormalized}%"])
+                ->orWhereRaw("REPLACE(REPLACE(REPLACE(description,'أ','ا'),'إ','ا'),'ة','ه') LIKE ?", ["%{$queryNormalized}%"])
+                ->get();
+        }
+
+        return view('front.search', compact('products', 'spares', 'query'));
     }
-    
 }

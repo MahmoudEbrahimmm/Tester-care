@@ -2,12 +2,12 @@
     <div id="cartProducts" class="mt-5" dir="rtl">
         <div class="table-responsive">
             <table class="table table-hover table-bordered align-middle shadow-sm rounded-3 text-center">
-                <thead class="table-dark text-white">
+                <thead class="table-info text-dark">
                     <tr>
                         <th>الصورة</th>
                         <th>المنتج</th>
                         <th>السعر</th>
-                        <th style="width: 180px;">الكمية</th>
+                        <th style="width: 280px;">الكمية</th>
                         <th>المجموع</th>
                         <th>إزالة</th>
                     </tr>
@@ -18,7 +18,7 @@
                         @php $total += $value['price'] * $value['quantity']; @endphp
                         <tr data-id="{{ $key }}">
                             <td>
-                                <img src="{{ asset('uploads/' . $value['image']) }}" 
+                                <img src="{{ asset('uploads/' . $value['image']) }}"
                                      class="rounded-3 shadow-sm border" 
                                      alt="{{ $value['name'] }}" 
                                      style="width: 90px; height: 90px; object-fit: cover;">

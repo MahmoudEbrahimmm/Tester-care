@@ -31,23 +31,12 @@
 
 <body>
 
+<!-- ***** Header Area Start ***** -->
+<header class="header-area shadow-sm text-white" style="background-color: #f39c12 !important; color: #fff !important;" dir="rtl">
 
-
-    <!-- ***** Preloader Start ***** -->
-    {{-- <div id="preloader">
-        <div class="jumper">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-    </div> --}}
-    <!-- ***** Preloader End ***** -->
-
-    <!-- ***** Header Area Start ***** -->
-    <header class="header-area bg-white shadow-sm">
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light">
-            <!-- Logo -->
+            <!-- الشعار -->
             <a class="navbar-brand" href="{{ url('/') }}">
                 <img src="{{ asset('front/assets/images/Test_IT_logo.png') }}" alt="Logo" style="width:120px;">
             </a>
@@ -59,40 +48,40 @@
             </button>
 
             <div class="collapse navbar-collapse" id="mainNavbar">
+                <!-- القائمة الرئيسية -->
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0 text-end" dir="rtl">
-    @if (Auth::user() && Auth::user()->role == 'admin')
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('dashboard') }}">لوحة التحكم</a>
-        </li>
-    @endif
-    <li class="nav-item"><a class="nav-link active" href="#top">الرئيسية</a></li>
-    <li class="nav-item"><a class="nav-link" href="#men">المنتجات</a></li>
-    <li class="nav-item"><a class="nav-link" href="#women">قطع الغيار</a></li>
-    <li class="nav-item"><a class="nav-link" href="#kids">الاقسام</a></li>
-    <li class="nav-item"><a class="nav-link" href="#contact">تواصل معنا</a></li>
+                    @if (Auth::user() && Auth::user()->role == 'admin')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('dashboard') }}">لوحة التحكم</a>
+                        </li>
+                    @endif
+                    <li class="nav-item"><a class="nav-link" href="{{ route('home') }}#top">الرئيسية</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('home') }}#men">المنتجات</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('home') }}#women">قطع الغيار</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('home') }}#kids">الأقسام</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('home') }}#contact">تواصل معنا</a></li>
 
-    <!-- صفحات -->
-    <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button"
-            data-bs-toggle="dropdown">
-            الصفحات
-        </a>
-        <ul class="dropdown-menu text-end" aria-labelledby="pagesDropdown" dir="rtl">
-            <li><a class="dropdown-item" href="{{ route('products') }}">كل المنتجات</a></li>
-            <li><a class="dropdown-item" href="{{ route('about') }}">من نحن</a></li>
-        </ul>
-    </li>
-</ul>
+                    <!-- الصفحات -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            الصفحات
+                        </a>
+                        <ul class="dropdown-menu text-end" aria-labelledby="pagesDropdown" dir="rtl">
+                            <li><a class="dropdown-item" href="{{ route('products') }}">كل المنتجات</a></li>
+                            <li><a class="dropdown-item" href="{{ route('about') }}">من نحن</a></li>
+                        </ul>
+                    </li>
+                </ul>
 
-
-                {{-- rtl --}}
+                <!-- قائمة أيقونات الحساب، السلة، البحث -->
                 <ul class="navbar-nav ms-auto align-items-center">
-                    {{-- cart --}}
+                    <!-- السلة -->
                     <li class="nav-item dropdown">
                         <a class="nav-link position-relative" href="#" id="cartDropdown" role="button"
                             data-bs-toggle="dropdown">
                             <i class="fa-solid fa-cart-shopping"></i>
-                            <span class="badge bg-danger position-absolute top-0 start-100 translate-middle">
+                            <span class="badge bg-warning position-absolute top-0 start-100 translate-middle">
                                 {{ count(session('cart', [])) }}
                             </span>
                         </a>
@@ -110,34 +99,32 @@
                                         </div>
                                     </li>
                                 @endforeach
-                                <li><a href="{{ route('cart') }}" class="btn btn-sm btn-primary w-100">عرض الكل</a>
-                                </li>
+                                <li><a href="{{ route('cart') }}" class="btn btn-sm btn-primary w-100">عرض الكل</a></li>
                             @else
                                 <li class="text-center">السلة فارغة</li>
                             @endif
                         </ul>
                     </li>
 
-                    <!-- search -->
-                    <li class="nav-item mx-3">
-                        <a href="#" class="nav-link" id="searchToggle"><i class="fa fa-search"></i></a>
-                        <form action="{{ route('products.search') }}" method="GET"
-                            class="d-none position-absolute bg-white p-2 shadow rounded" id="searchForm"
-                            style="top:60px; right:10px; z-index:1000; width: 250px;">
-                            <div class="input-group">
-                                <input type="text" name="query" class="form-control"
-                                    placeholder="ابحث عن منتج..." required>
-                                <button type="submit" class="btn btn-primary"><i
-                                        class="fa fa-search"></i></button>
-                            </div>
-                        </form>
+                    <!-- البحث -->
+                    <li class="nav-item mx-2 d-lg-none"> <!-- يظهر فقط على الموبايل -->
+                        <a href="#" class="nav-link" id="mobileSearchToggle"><i class="fa fa-search"></i></a>
                     </li>
+                    <form action="{{ route('products.search') }}" method="GET"
+                        class="d-none position-absolute bg-white p-2 shadow rounded" id="mobileSearchForm"
+                        style="top:50px; right:10px; z-index:1000; width: 200px;">
+                        <div class="input-group">
+                            <input type="text" name="query" class="form-control"
+                                placeholder="ابحث عن منتج..." required>
+                            <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                        </div>
+                    </form>
 
-                    <!-- account -->
+                    <!-- الحساب -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                             data-bs-toggle="dropdown">
-                            <i class="fa-solid fa-user"></i> {{ Auth::user()->name ?? '' }}
+                            <i class="fa-solid fa-user"></i> {{ Auth::user()->name ?? 'حسابي' }}
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                             <li><a class="dropdown-item" href="{{ route('login') }}">تسجيل الدخول</a></li>
@@ -153,12 +140,21 @@
                         </ul>
                     </li>
                 </ul>
+                
             </div>
         </nav>
     </div>
 </header>
+<!-- ***** Header Area End ***** -->
+<script>
+    document.getElementById('mobileSearchToggle').addEventListener('click', function(e) {
+        e.preventDefault();
+        const form = document.getElementById('mobileSearchForm');
+        form.classList.toggle('d-none');
+    });
+</script>
 
-    <!-- ***** Header Area End ***** -->
+
 
     <div class="mt-5">
         @yield('content')
@@ -166,67 +162,101 @@
 
 
 
-    <!-- ***** Footer Start ***** -->
-<footer dir="rtl">
-    <div class="container">
-        <div class="row text-center">
-            <div class="col-lg-3">
-                <div class="first-item">
-                    <div class="logo">
-                        <img src="{{ asset('front/assets/images/Test_IT_logo.png') }}" style="width:120px;" alt="Logo">
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3">
-                <h4>الوصول الينا</h4>
-                <ul>
-                    <li><a href="#"> امتداد شارع جيهان بعد دار الضيافه شارع زهور هولندا</a></li>
-                    <li><a href="#">info@tester.com</a></li>
-                    <li><a href="https://wa.me/01554866941">015-548-66941</a></li>
-                </ul>
-            </div>
-            <div class="col-lg-3">
-                <h4>التسوق والفئات</h4>
-                <ul>
-                    <li><a href="{{ route('products') }}">أجهزة اللاب توب </a></li>
-                    <li><a href="{{ route('home') }}#women">صيانة جميع المنتجات</a></li>
-                    <li><a href="{{ route('home') }}#kids">جميع الاقسام</a></li>
-                </ul>
-            </div>
-            <div class="col-lg-3">
-                <h4>روابط مهمة</h4>
-                <ul>
-                    <li><a href="{{ route('home') }}">الصفحة الرئيسية</a></li>
-                    <li><a href="{{ route('about') }}">من نحن</a></li>
-                    <li><a href="{{ route('home') }}#contact">اتصل بنا</a></li>
-                </ul>
-            </div>
-            <div class="col-lg-12">
-                <div class="under-footer">
-                    <ul class="mb-3">
-                        <li><a href="https://www.facebook.com/share/15LXLfbLJc/" target="_blank" class="text-primary"><i class="fab fa-facebook-f"></i></a></li>
-                        <li>
-                            <a href="https://wa.me/01554866941" target="_blank" class="text-success">
-                                <i class="fab fa-whatsapp fa-lg"></i>
-                            </a>
-                        </li>
-                        <li><a href="https://www.tiktok.com/@tester9471?_t=ZS-8zmaHzQWN62&_r=1"><i class="fab fa-tiktok"></i></a></li>
-                        <li>
-                            <a href="https://www.instagram.com/ahmed.r2fat.1192?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="text-danger">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                        </li>
-                    </ul>
-                    <p class="text-center">
-                        حقوق النشر © 2025 شركة  لصيانة وبيع كل ما يخص اللاب توب والأجهزة المستوردة. جميع الحقوق محفوظة. <br>
-                        تصميم: <a href="https://wa.me/201004976135" target="_blank" title="Backend devolper">Mahmoud Ebrahim</a>
-                        <span class="fa-stack"> </span>
-                    </p>
-                </div>
-            </div>
+<!-- ***** Footer Start ***** -->
+<footer class="bg-light text-dark pt-5 mt-5 border-top shadow-sm" dir="rtl">
+  <div class="container">
+    <div class="row text-center text-md-start gy-4">
+
+      <!-- Logo -->
+      <div class="col-lg-3 col-md-6">
+        <div class="mb-3">
+          <img src="{{ asset('front/assets/images/Test_IT_logo.png') }}" alt="Logo" style="width: 130px;">
         </div>
+        <p class="text-muted small">
+          شركة <strong class="text-primary">Tester</strong> لصيانة وبيع الأجهزة الإلكترونية الأصلية بأفضل الأسعار.
+        </p>
+      </div>
+
+      <!-- الوصول إلينا -->
+      <div class="col-lg-3 col-md-6">
+        <h5 class="fw-bold text-primary mb-3">الوصول إلينا</h5>
+        <ul class="list-unstyled small lh-lg">
+          <li><i class="fa fa-map-marker-alt text-primary ms-2"></i> امتداد شارع جيهان بعد دار الضيافة</li>
+          <li><i class="fa fa-envelope text-primary ms-2"></i> info@tester.com</li>
+          <li><i class="fa fa-phone text-primary ms-2"></i> <a href="https://wa.me/01554866941" class="text-decoration-none text-dark">01554866941</a></li>
+        </ul>
+      </div>
+
+      <!-- الفئات -->
+      <div class="col-lg-3 col-md-6">
+        <h5 class="fw-bold text-primary mb-3">التسوق والفئات</h5>
+        <ul class="list-unstyled small lh-lg">
+          <li><a href="{{ route('products') }}" class="text-dark text-decoration-none">أجهزة اللاب توب</a></li>
+          <li><a href="{{ route('home') }}#women" class="text-dark text-decoration-none">صيانة جميع المنتجات</a></li>
+          <li><a href="{{ route('home') }}#kids" class="text-dark text-decoration-none">جميع الأقسام</a></li>
+        </ul>
+      </div>
+
+      <!-- روابط مهمة -->
+      <div class="col-lg-3 col-md-6">
+        <h5 class="fw-bold text-primary mb-3">روابط مهمة</h5>
+        <ul class="list-unstyled small lh-lg">
+          <li><a href="{{ route('home') }}" class="text-dark text-decoration-none">الصفحة الرئيسية</a></li>
+          <li><a href="{{ route('about') }}" class="text-dark text-decoration-none">من نحن</a></li>
+          <li><a href="{{ route('home') }}#contact" class="text-dark text-decoration-none">اتصل بنا</a></li>
+        </ul>
+      </div>
     </div>
+
+    <!-- تحت الفوتر -->
+    <div class="under-footer text-center mt-4 border-top pt-3">
+      <ul class="list-inline mb-3">
+        <li class="list-inline-item mx-2">
+          <a href="https://www.facebook.com/share/15LXLfbLJc/" target="_blank" class="text-primary fs-5">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+        </li>
+        <li class="list-inline-item mx-2">
+          <a href="https://wa.me/01554866941" target="_blank" class="text-success fs-5">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+        </li>
+        <li class="list-inline-item mx-2">
+          <a href="https://www.tiktok.com/@tester9471?_t=ZS-8zmaHzQWN62&_r=1" target="_blank" class="text-dark fs-5">
+            <i class="fab fa-tiktok"></i>
+          </a>
+        </li>
+        <li class="list-inline-item mx-2">
+          <a href="https://www.instagram.com/ahmed.r2fat.1192?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="text-danger fs-5">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </li>
+      </ul>
+
+      <p class="text-muted small mb-0">
+        حقوق النشر © 2025 شركة <span class="text-primary fw-bold">Tester</span> لصيانة وبيع كل ما يخص اللاب توب والأجهزة المستوردة. جميع الحقوق محفوظة. <br>
+        تصميم: 
+        <a href="https://wa.me/201004976135" target="_blank" class="fw-bold text-primary text-decoration-none" title="Backend Developer">
+          Mahmoud Ebrahim
+        </a>
+      </p>
+    </div>
+  </div>
 </footer>
+
+<!-- Footer Style -->
+<style>
+footer ul li a:hover {
+  color: #0d6efd !important;
+}
+footer .fa {
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+footer .fa:hover {
+  transform: translateY(-3px);
+}
+</style>
+
 
 
 
