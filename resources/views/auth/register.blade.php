@@ -9,23 +9,23 @@
 
   <style>
     body {
-      background-color: #1f2937; /* bg-gray-900 equivalent */
-      color: #ffffff;
+      background-color: #e67e22;
+      color: #000;
     }
     .form-container {
-      background-color: #2d3748; /* bg-gray-800 equivalent */
+      background-color: #f39c12;
       border-radius: 0.75rem;
-      box-shadow: 0 10px 15px rgba(0,0,0,0.3);
+      box-shadow: 0 10px 15px #ecf0f124;
       padding: 2rem;
       max-width: 600px;
       width: 100%;
     }
     .form-control:focus {
       box-shadow: 0 0 0 0.25rem rgba(59, 130, 246, 0.5);
-      border-color: #3b82f6;
+      border-color: #f1c40f;
     }
     a {
-      color: #60a5fa;
+      color: #3498db;
     }
     a:hover {
       text-decoration: underline;
@@ -46,7 +46,7 @@
       <div class="row g-3">
         <div class="col-12">
           <label for="name" class="form-label">الاسم</label>
-          <input type="text" id="name" name="name" autofocus autocomplete="name" value="{{ old('name') }}" class="form-control bg-dark text-white border-secondary">
+          <input type="text" id="name" name="name" autofocus autocomplete="name" value="{{ old('name') }}" class="form-control text-dark border-secondary">
           @error('name')
             <div class="text-danger small mt-1">{{ $message }}</div>
           @enderror
@@ -54,7 +54,7 @@
 
         <div class="col-md-6">
           <label for="email" class="form-label">البريد الالكتروني</label>
-          <input type="email" id="email" name="email" autocomplete="off" value="{{ old('email') }}" class="form-control bg-dark text-white border-secondary">
+          <input type="email" id="email" name="email" autocomplete="off" value="{{ old('email') }}" class="form-control text-dark border-secondary">
           @error('email')
             <div class="text-danger small mt-1">{{ $message }}</div>
           @enderror
@@ -62,7 +62,7 @@
 
         <div class="col-md-6">
           <label for="phone" class="form-label">الهاتف</label>
-          <input type="text" id="phone" name="phone" autocomplete="off" value="{{ old('phone') }}" class="form-control bg-dark text-white border-secondary">
+          <input type="text" id="phone" name="phone" autocomplete="off" value="{{ old('phone') }}" class="form-control text-dark border-secondary">
           @error('phone')
             <div class="text-danger small mt-1">{{ $message }}</div>
           @enderror
@@ -70,7 +70,7 @@
 
         <div class="col-md-6">
           <label for="password" class="form-label">كلمة المرور</label>
-          <input type="password" id="password" name="password" autocomplete="new-password" class="form-control bg-dark text-white border-secondary">
+          <input type="password" id="password" name="password" autocomplete="new-password" class="form-control text-dark border-secondary">
           @error('password')
             <div class="text-danger small mt-1">{{ $message }}</div>
           @enderror
@@ -78,12 +78,12 @@
 
         <div class="col-md-6">
           <label for="confirm-password" class="form-label">تاكيد كلمة المرور</label>
-          <input type="password" id="confirm-password" name="password_confirmation" autocomplete="new-password" class="form-control bg-dark text-white border-secondary">
+          <input type="password" id="confirm-password" name="password_confirmation" autocomplete="new-password" class="form-control text-dark border-secondary">
         </div>
       </div>
 
       <div class="mt-4">
-        <button type="submit" class="btn btn-primary w-100">انشاء</button>
+        <button type="submit" class="btn btn-warning w-100">انشاء</button>
       </div>
 
       <p class="mt-3 text-center small">

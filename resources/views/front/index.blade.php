@@ -2,7 +2,7 @@
 @section('content')
 
 <!-- ================= Hero Section ================= -->
-<section class="hero-section w-100 py-5" dir="rtl">
+<section class="hero-section w-100 py-3" dir="rtl">
     <div class="container">
         <div class="row align-items-center gy-4 p-4">
             <!-- النص -->
