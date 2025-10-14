@@ -160,7 +160,85 @@
         @yield('content')
     </div>
 
+    <!-- ***** Social Area Starts ***** -->
+    <section class="section" id="products">
+        <div class="container mt-3">
+            <h3 class="text-center mb-3 mt-5">...اكتشف اكتر</h3>
+            <br>
+            <div class="row images mb-5">
+                @foreach ($products_media as $product)
+                    <x-media-product :product="$product" />
+                @endforeach
+            </div>
 
+            <div class="company-info p-4 rounded-4 shadow-sm" dir="rtl" style="text-align: right;">
+                <h5 class="fw-bold mb-3">تستر - شركة متخصصة في بيع وصيانة أجهزة اللاب توب والكمبيوترات</h5>
+                <p class="mb-3">
+                    تستر تقدم لك مجموعة واسعة من الأجهزة والخدمات، لتتمكن من التسوق بسهولة وأمان. اكتشف مجموعتنا من المنتجات
+                    مع أفضل الأسعار وخدمة ما بعد البيع.
+                </p>
+
+                <h6 class="fw-semibold mt-3">استكشف فئاتنا المتنوعة:</h6>
+                <ul class="mb-3">
+                    <li>أجهزة اللاب توب والكمبيوترات المكتبية، وملحقاتها.</li>
+                    <li>قطع غيار أصلية وصيانة احترافية للأجهزة.</li>
+                    <li>إكسسوارات، حافظات، وفأرات ولوحات مفاتيح.</li>
+                    <li>خدمات تحديث البرمجيات وتثبيت الأنظمة.</li>
+                </ul>
+
+                <h6 class="fw-semibold mt-3">خدمات وحلول مميزة:</h6>
+                <ul class="mb-3">
+                    <li>توصيل سريع للطلبات داخل المدينة.</li>
+                    <li>خدمة دعم فني عبر الهاتف أو الإنترنت طوال الأسبوع.</li>
+                    <li>استرجاع الأجهزة أو القطع خلال 14 يومًا إذا لزم الأمر.</li>
+                </ul>
+
+                <h6 class="fw-semibold mt-3">لماذا تختار تستر؟</h6>
+                <ul>
+                    <li>تجربة تسوق آمنة وسهلة من منزلك.</li>
+                    <li>منتجات ذات جودة عالية وأسعار منافسة.</li>
+                    <li>خدمة عملاء سريعة ومتجاوبة عبر جميع القنوات.</li>
+                </ul>
+            </div>
+
+
+        </div>
+    </section>
+    <!-- CSS -->
+    <style>
+        .company-info {
+            font-family: "Tajawal", sans-serif;
+            line-height: 1.7;
+            background-color: #fff;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .company-info h3 {
+            color: #111;
+        }
+
+        .company-info h5 {
+            color: #333;
+        }
+
+        .company-info ul {
+            padding-left: 20px;
+        }
+
+        .company-info ul li {
+            margin-bottom: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .company-info {
+                padding: 20px;
+            }
+        }
+    </style>
+    <!-- ***** Social Area Ends ***** -->
 
 <!-- ***** Footer Start ***** -->
 <footer class="bg-light text-dark pt-5 mt-5 border-top shadow-sm" dir="rtl">
@@ -243,7 +321,6 @@
     </div>
   </div>
 </footer>
-
 <!-- Footer Style -->
 <style>
 footer ul li a:hover {

@@ -13,7 +13,8 @@ class CartController extends Controller
 {
     public function index()
     {
-        return view('cart');
+                $products_media = Product::latestProduct(6)->get();
+        return view('cart' ,compact('products_media'));
     }
 
     public function addToCart($id, Request $request)
@@ -57,11 +58,13 @@ class CartController extends Controller
 
     public function checkout()
     {
+                $products_media = Product::latestProduct(6)->get();
+
         if (!session()->has('cart') || empty(session('cart'))) {
             return redirect()->route('cart')->with('error', 'السلة فارغة!');
         }
 
-        return view('checkout');
+        return view('checkout', compact('products_media'));
     }
 
     public function checkoutStore(Request $request)

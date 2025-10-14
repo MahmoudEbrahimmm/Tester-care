@@ -29,21 +29,27 @@ class HomeController extends Controller
     }
     public function showProduct(Product $product)
     {
-        return view('front.show-product', compact('product'));
+        $products_media = Product::latestProduct(6)->get();
+        return view('front.show-product', compact('product', 'products_media'));
     }
     public function allProducts()
     {
         $products = Product::paginate(8);
-        return view('front.products', compact('products'));
+        $products_media = Product::latestProduct(6)->get();
+        return view('front.products', compact('products', 'products_media'));
     }
     public function about()
     {
+        $products_media = Product::latestProduct(6)->get();
+
         $category_about = Category::latestCategory(3)->get();
-        return view('front.about', compact('category_about'));
+        return view('front.about', compact('category_about', 'products_media'));
     }
 
     public function search(Request $request)
     {
+        $products_media = Product::latestProduct(6)->get();
+
         $query = trim($request->input('query'));
 
         $arabicNumbers = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
@@ -68,6 +74,6 @@ class HomeController extends Controller
                 ->get();
         }
 
-        return view('front.search', compact('products', 'spares', 'query'));
+        return view('front.search', compact('products', 'spares', 'query', 'products_media'));
     }
 }

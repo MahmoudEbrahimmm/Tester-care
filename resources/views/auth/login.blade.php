@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,36 +9,100 @@
 
   <style>
     body {
-      background-color: #e67e22;
-      color: #000;
+            background: linear-gradient(135deg, #fff, #e67e22);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Tajawal', sans-serif;
     }
-    .form-container {
-      background-color: #f39c12;
-      border-radius: 0.75rem;
-      box-shadow: 0 10px 15px #ecf0f124;
-      padding: 2rem;
-      max-width: 400px;
+
+    .auth-card {
+      background-color: #fff;
+      border-radius: 1rem;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      padding: 2.5rem 2rem;
       width: 100%;
+      max-width: 420px;
+      transition: transform 0.3s ease;
     }
+
+    .auth-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .auth-title {
+      color: #e67e22;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+
+    .form-label {
+      font-weight: 600;
+    }
+
+    .form-control {
+      border-radius: 0.5rem;
+      border: 1px solid #ddd;
+      transition: all 0.2s ease;
+    }
+
     .form-control:focus {
-      box-shadow: 0 0 0 0.25rem rgba(59, 130, 246, 0.5);
-      border-color: #f1c40f;
+      border-color: #f39c12;
+      box-shadow: 0 0 0 0.2rem rgba(243, 156, 18, 0.25);
     }
+
+    .btn-login {
+      background-color: #f39c12;
+      border: none;
+      font-weight: 600;
+      color: #fff;
+      border-radius: 0.5rem;
+      transition: background 0.3s ease;
+    }
+
+    .btn-login:hover {
+      background-color: #e67e22;
+    }
+
     a {
-      color: #3498db;
+      color: #e67e22;
+      text-decoration: none;
+      font-weight: 500;
     }
+
     a:hover {
       text-decoration: underline;
     }
+
+    .text-danger.small {
+      font-size: 0.85rem;
+    }
+  
+.form-check-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(243, 156, 18, 0.5);
+  border-color: #f39c12;
+  background-color: #f39c12;
+}
+.form-check-input:checked {
+  background-color: #f39c12;
+  border-color: #f39c12;
+}
+.form-check-input:not(:checked):not(:focus) {
+  background-color: #fff;
+  border-color: #ddd;
+}
+
   </style>
 </head>
-<body class="d-flex align-items-center justify-content-center min-vh-100">
 
-  <div class="form-container">
-    <h2 class="text-center mb-4 fw-bold">تسجيل الدخول</h2>
+<body>
+  <div class="auth-card">
+    <h2 class="text-center auth-title">تسجيل الدخول</h2>
 
     @if(session('error'))
-      <div class="text-danger mb-2">{{ session('error') }}</div>
+      <div class="alert alert-danger text-center py-2">{{ session('error') }}</div>
     @endif
 
     <form action="{{ route('login') }}" method="POST">
@@ -47,7 +111,8 @@
       <!-- البريد الإلكتروني -->
       <div class="mb-3">
         <label for="email" class="form-label">البريد الإلكتروني</label>
-        <input type="email" id="email" name="email" value="{{ old('email') }}" class="form-control text-dark border-secondary" required autofocus>
+        <input type="email" id="email" name="email" value="{{ old('email') }}"
+               class="form-control" required autofocus>
         @error('email')
           <div class="text-danger small mt-1">{{ $message }}</div>
         @enderror
@@ -56,7 +121,7 @@
       <!-- كلمة المرور -->
       <div class="mb-3">
         <label for="password" class="form-label">كلمة المرور</label>
-        <input type="password" id="password" name="password" class="form-control text-dark border-secondary" required>
+        <input type="password" id="password" name="password" class="form-control" required>
         @error('password')
           <div class="text-danger small mt-1">{{ $message }}</div>
         @enderror
@@ -65,15 +130,16 @@
       <!-- تذكرني -->
       <div class="form-check mb-3">
         <input type="checkbox" name="remember" id="remember" class="form-check-input">
-        <label for="remember" class="form-check-label text-dark">تذكرني</label>
+        <label for="remember" class="form-check-label">تذكرني</label>
       </div>
 
-      <div class="mt-4">
-        <button type="submit" class="btn btn-warning w-100">تسجيل الدخول</button>
+      <!-- زر الدخول -->
+      <div class="d-grid mt-4">
+        <button type="submit" class="btn btn-login py-2">تسجيل الدخول</button>
       </div>
 
       <p class="mt-3 text-center small">
-        لا تملك حساب؟ <a href="{{ route('register') }}">انشاء حساب جديد</a>
+        لا تملك حساب؟ <a href="{{ route('register') }}">إنشاء حساب جديد</a>
       </p>
     </form>
   </div>

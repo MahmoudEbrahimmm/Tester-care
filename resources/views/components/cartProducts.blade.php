@@ -2,7 +2,7 @@
     <div id="cartProducts" class="mt-5" dir="rtl">
         <div class="table-responsive">
             <table class="table table-hover table-bordered align-middle shadow-sm rounded-3 text-center">
-                <thead class="table-info text-dark">
+                <thead class="bg-warning text-dark">
                     <tr>
                         <th>الصورة</th>
                         <th>المنتج</th>
@@ -52,19 +52,19 @@
             </h4>
             <div class="d-flex gap-2 mt-3 mt-md-0">
                 <a href="{{ route('home') }}" 
-                   class="btn btn-outline-secondary btn-lg px-4 shadow-sm d-flex align-items-center gap-2">
-                    <i class="fa fa-shopping-bag"></i> تسوق
+                   class="btn btn-secondary btn-lg px-4 shadow-sm d-flex align-items-center gap-2">
+                    <i class="fa fa-shopping-bag text-white"></i> تسوق
                 </a>
                 <a href="{{ route('checkout') }}" 
-                   class="btn btn-primary btn-lg px-4 shadow-sm d-flex align-items-center gap-2">
+                   class="btn btn-warning btn-lg px-4 shadow-sm d-flex align-items-center gap-2 mx-3">
                     <i class="fa fa-credit-card"></i> شراء
                 </a>
             </div>
         </div>
     </div>
 @else
-    <div class="alert alert-info text-center mt-5 shadow-sm rounded-3">
-        <h5 class="mb-0">السلة فارغة حالياً</h5>
+    <div class="alert alert-warning text-center mt-5 shadow-sm rounded-3">
+        <h5 class="mb-0 text-white">السلة فارغة حالياً</h5>
     </div>
     <a href="{{ route('home') }}" 
        class="btn btn-outline-primary btn-lg px-4 shadow-sm w-100 mt-3 d-flex align-items-center justify-content-center gap-2">

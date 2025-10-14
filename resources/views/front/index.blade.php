@@ -1,131 +1,132 @@
 @extends('layouts.front')
 @section('content')
+    <!-- ================= Hero Section ================= -->
+    <section class="hero-section w-100 py-3" dir="rtl">
+        <div class="container">
+            <div class="row align-items-center gy-4 p-4">
+                <!-- النص -->
+                <div class="col-lg-6 text-end">
+                    <h1 class="fw-bold mb-3 text-dark">
+                        مرحبًا بك في <span class="text-warning">Tester</span>
+                    </h1>
+                    <p class="text-muted mb-4 lh-lg">
+                        نحن شركة متخصصة في <strong>صيانة وبيع الأجهزة الإلكترونية</strong>،
+                        نقدم منتجات عالية الجودة تشمل <strong>اللابتوبات، الشاشات، والإكسسوارات الأصلية</strong>
+                        بأسعار منافسة وخدمة عملاء متميزة. هدفنا هو توفير تجربة تسوق ذكية وآمنة تجمع بين
+                        الكفاءة والاحترافية.
+                    </p>
 
-<!-- ================= Hero Section ================= -->
-<section class="hero-section w-100 py-3" dir="rtl">
-    <div class="container">
-        <div class="row align-items-center gy-4 p-4">
-            <!-- النص -->
-            <div class="col-lg-6 text-end">
-                <h1 class="fw-bold mb-3 text-dark">
-                    مرحبًا بك في <span class="text-warning">Tester</span>
-                </h1>
-                <p class="text-muted mb-4 lh-lg">
-                    نحن شركة متخصصة في <strong>صيانة وبيع الأجهزة الإلكترونية</strong>،
-                    نقدم منتجات عالية الجودة تشمل <strong>اللابتوبات، الشاشات، والإكسسوارات الأصلية</strong>
-                    بأسعار منافسة وخدمة عملاء متميزة. هدفنا هو توفير تجربة تسوق ذكية وآمنة تجمع بين
-                    الكفاءة والاحترافية.
-                </p>
+                    <div class="d-flex justify-content-end align-items-center gap-3 flex-wrap flex-md-nowrap">
 
-                <div class="d-flex justify-content-end align-items-center gap-3 flex-wrap flex-md-nowrap">
+                        <form action="{{ route('products.search') }}" method="GET"
+                            class="d-flex hero-search me-5 p-1 mx-3">
+                            <input type="text" name="query" class="form-control rounded-pill px-3"
+                                placeholder="ابحث عن المنتج أو رقم التتبع..." required>
+                            <button type="submit"
+                                class="btn btn-warning ms-2 px-4 py-2 fw-bold rounded-pill shadow-sm text-dark">
+                                <i class="fa fa-search ms-1"></i>
+                            </button>
+                        </form>
 
-                    <form action="{{ route('products.search') }}" method="GET" class="d-flex hero-search me-5 p-1 mx-3">
-                        <input type="text" name="query" class="form-control rounded-pill px-3"
-                            placeholder="ابحث عن المنتج أو رقم التتبع..." required>
-                        <button type="submit"
-                            class="btn btn-warning ms-2 px-4 py-2 fw-bold rounded-pill shadow-sm text-dark">
-                            <i class="fa fa-search ms-1"></i> 
-                        </button>
-                    </form>
+                        <!-- زر تصفح المنتجات -->
+                        <a href="{{ route('products') }}"
+                            class="btn btn-warning px-4 py-2 fw-bold rounded-pill shadow-sm text-dark d-flex align-items-center me-5 m-2">
+                            <i class="fa fa-shopping-bag ms-2"></i> تصفح المنتجات
+                        </a>
 
-                    <!-- زر تصفح المنتجات -->
-                    <a href="{{ route('products') }}"
-                        class="btn btn-warning px-4 py-2 fw-bold rounded-pill shadow-sm text-dark d-flex align-items-center me-5 m-2">
-                        <i class="fa fa-shopping-bag ms-2"></i> تصفح المنتجات
-                    </a>
+                        <!-- زر سلة المشتريات -->
+                        <a href="{{ route('cart') }}"
+                            class="btn btn-outline-dark px-4 py-2 fw-bold rounded-pill shadow-sm d-flex align-items-center position-relative">
+                            <i class="fa fa-shopping-cart ms-2"></i> سلة المشتريات
+                            @if (session('cart') && count(session('cart')) > 0)
+                                <span
+                                    class="position-absolute top-0 start-0 translate-middle badge rounded-pill bg-warning text-dark">
+                                    {{ count(session('cart')) }}
+                                </span>
+                            @endif
+                        </a>
+                    </div>
+                </div>
 
-                    <!-- زر سلة المشتريات -->
-                    <a href="{{ route('cart') }}"
-                        class="btn btn-outline-dark px-4 py-2 fw-bold rounded-pill shadow-sm d-flex align-items-center position-relative">
-                        <i class="fa fa-shopping-cart ms-2"></i> سلة المشتريات
-                        @if (session('cart') && count(session('cart')) > 0)
-                            <span
-                                class="position-absolute top-0 start-0 translate-middle badge rounded-pill bg-warning text-dark">
-                                {{ count(session('cart')) }}
-                            </span>
-                        @endif
-                    </a>
+                <!-- الصورة -->
+                <div class="col-lg-6 text-center">
+                    <img src="{{ asset('front/assets/images/Test_IT_logo.png') }}" alt="Electronics"
+                        class="img-fluid rounded-4 shadow-sm hero-img">
                 </div>
             </div>
-
-            <!-- الصورة -->
-            <div class="col-lg-6 text-center">
-                <img src="{{ asset('front/assets/images/Test_IT_logo.png') }}" alt="Electronics"
-                    class="img-fluid rounded-4 shadow-sm hero-img">
-            </div>
         </div>
-    </div>
-</section>
-<!-- ================= End Hero Section ================= -->
-<!-- ====== CSS Styling ====== -->
-<style>
-    .hero-section {
-        background: linear-gradient(90deg, #fff 55%, #fdf4ec 100%);
-        border-radius: 0;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    }
+    </section>
+    <!-- ================= End Hero Section ================= -->
+    <!-- ====== CSS Styling ====== -->
+    <style>
+        .hero-section {
+            background: linear-gradient(90deg, #fff 55%, #fdf4ec 100%);
+            border-radius: 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
 
-    .hero-img {
-        max-height: 420px;
-        object-fit: contain;
-        transition: transform 0.4s ease;
-    }
+        .hero-img {
+            max-height: 420px;
+            object-fit: contain;
+            transition: transform 0.4s ease;
+        }
 
-    .hero-img:hover {
-        transform: scale(1.05);
-    }
+        .hero-img:hover {
+            transform: scale(1.05);
+        }
 
-    .btn {
-        transition: all 0.3s ease;
-    }
+        .btn {
+            transition: all 0.3s ease;
+        }
 
-    .btn:hover {
-        transform: translateY(-2px);
-    }
+        .btn:hover {
+            transform: translateY(-2px);
+        }
 
-    .btn-warning {
-        background-color: #f68b1e !important;
-        border: none;
-    }
+        .btn-warning {
+            background-color: #f68b1e !important;
+            border: none;
+        }
 
-    .btn-warning:hover {
-        background-color: #e47912 !important;
-        color: #fff !important;
-    }
+        .btn-warning:hover {
+            background-color: #e47912 !important;
+            color: #fff !important;
+        }
 
-    .btn-outline-dark:hover {
-        background-color: #000 !important;
-        color: #fff !important;
-    }
+        .btn-outline-dark:hover {
+            background-color: #000 !important;
+            color: #fff !important;
+        }
 
-    .badge {
-        font-size: 0.7rem;
-        padding: 0.35em 0.5em;
-        border: 1px solid #fff;
-    }
-
-    .hero-search input {
-        height: 45px;
-        border: 2px solid #f68b1e;
-        width: 230px;
-    }
-
-    .hero-search button {
-        height: 45px;
-    }
-
-    @media (max-width: 576px) {
-        .d-flex.gap-3 a,
-        .hero-search {
-            flex: 1 1 auto;
-            text-align: center;
+        .badge {
+            font-size: 0.7rem;
+            padding: 0.35em 0.5em;
+            border: 1px solid #fff;
         }
 
         .hero-search input {
-            width: 100%;
+            height: 45px;
+            border: 2px solid #f68b1e;
+            width: 230px;
         }
-    }
-</style>
+
+        .hero-search button {
+            height: 45px;
+        }
+
+        @media (max-width: 576px) {
+
+            .d-flex.gap-3 a,
+            .hero-search {
+                flex: 1 1 auto;
+                text-align: center;
+            }
+
+            .hero-search input {
+                width: 100%;
+            }
+        }
+    </style>
 
 
 
@@ -547,15 +548,8 @@
     <!-- ***** Contact Area Ends ***** -->
 
     <!-- ***** Social Area Starts ***** -->
-    <section class="section" id="social">
-        <div class="container">
-            <div class="row images">
-                @foreach ($products_media as $product)
-                    <x-media-product :product="$product" />
-                @endforeach
-            </div>
-        </div>
-    </section> <!-- ***** Social Area Ends ***** -->
+    
+    <!-- ***** Social Area Ends ***** -->
     </div>
     </div>
     </div>
